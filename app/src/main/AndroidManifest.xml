@@ -19,6 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ActivityOrientacia"></activity>
+        <activity android:name=".ActivityPodmienkyPrijatia"></activity>
+        <activity android:name=".ActivityStudentskyZivot"></activity>
+        <activity android:name=".ActivityMoznostiStudia"></activity>
     </application>
 
 </manifest>

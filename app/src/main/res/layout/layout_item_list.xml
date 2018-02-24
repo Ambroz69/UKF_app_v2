@@ -15,6 +15,15 @@
         android:text="where is this text?"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
+    <TextView
+        android:id="@+id/textViewObsah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="8"
+        android:visibility="gone"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
 
     <TextView
         android:textStyle="bold"

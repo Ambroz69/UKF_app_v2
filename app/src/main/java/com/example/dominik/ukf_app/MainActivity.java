@@ -1,10 +1,12 @@
 package com.example.dominik.ukf_app;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
 
+
     EditText editTextId, editTextNazov, editTextObsah;
     ListView listView;
     Button buttonAddUpdate;
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     List<Item> itemList;
 
     boolean isUpdating = false;
+
+    GridLayout mainGrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +69,54 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         readItems();
+
+        mainGrid = (GridLayout) findViewById(R.id.mainGrid);
+        setSingleEvent(mainGrid);
+
     }
 
+    /* test */
+    private void setSingleEvent(GridLayout mainGrid) {
+        CardView cardView1 = (CardView) mainGrid.getChildAt(0);
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudia.class);
+                intent.putExtra("info","Moznosti studia na fakulte prirodnych vied");
+                startActivity(intent);
+            }
+        });
+
+        CardView cardView2 = (CardView) mainGrid.getChildAt(1);
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ActivityPodmienkyPrijatia.class);
+                intent.putExtra("info","Podmienky prijatia na FPV UKF");
+                startActivity(intent);
+            }
+        });
+
+        CardView cardView3 = (CardView) mainGrid.getChildAt(2);
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ActivityOrientacia.class);
+                intent.putExtra("info","Orientacia na fakulte FPV");
+                startActivity(intent);
+            }
+        });
+
+        CardView cardView4 = (CardView) mainGrid.getChildAt(3);
+        cardView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudia.class);
+                intent.putExtra("info","Moznosti studia na fakulte prirodnych vied");
+                startActivity(intent);
+            }
+        });
+    }
 
     private void createItem() {
         String nazov = editTextNazov.getText().toString().trim();
@@ -210,13 +262,16 @@ public class MainActivity extends AppCompatActivity {
             LayoutInflater inflater = getLayoutInflater();
             View listViewItem = inflater.inflate(R.layout.layout_item_list, null, true);
 
+            TextView textViewObsah = listViewItem.findViewById(R.id.textViewObsah);
             TextView textViewName = listViewItem.findViewById(R.id.textViewName);
             TextView textViewUpdate = listViewItem.findViewById(R.id.textViewUpdate);
             TextView textViewDelete = listViewItem.findViewById(R.id.textViewDelete);
 
+
             final Item item = itemList.get(position);
 
             textViewName.setText(item.getNazov());
+            textViewObsah.setText(item.getObsah());
 
             textViewUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -253,7 +308,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            String text = textViewObsah.getText().toString();
+            System.out.println("Obsah: " + text);
+
             return listViewItem;
+
         }
     }
+
 }

@@ -1,12 +1,8 @@
 <resources>
     <string name="app_name">UKF</string>
-
-    <array name="faculties">
-        <item>FPV</item>
-        <item>FSVaZ</item>
-        <item>FSŠ</item>
-        <item>FF</item>
-        <item>PF</item>
-    </array>
+    <string name="moznosti_studia">Možnosti štúdia</string>
+    <string name="podmienky_prijatia">Podmienky prijatia</string>
+    <string name="studentsky_zivot">Študentský život</string>
+    <string name="orientacia">Orientácia</string>
 </resources>
 
