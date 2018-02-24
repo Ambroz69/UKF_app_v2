@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">UKF</string>
+
+    <array name="faculties">
+        <item>FPV</item>
+        <item>FSVaZ</item>
+        <item>FSŠ</item>
+        <item>FF</item>
+        <item>PF</item>
+    </array>
+</resources>
+
