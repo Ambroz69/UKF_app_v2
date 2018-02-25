@@ -4,13 +4,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ActivityMoznostiStudia extends AppCompatActivity {
+
+    List<Item> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moznosti_studia);
+
 
         TextView infoMoznostiStudia = (TextView)findViewById(R.id.infoMoznostiStudia);
         if(getIntent() != null)
@@ -18,6 +24,8 @@ public class ActivityMoznostiStudia extends AppCompatActivity {
             String info = getIntent().getStringExtra("info");
             infoMoznostiStudia.setText(info);
         }
+
     }
+
 
 }

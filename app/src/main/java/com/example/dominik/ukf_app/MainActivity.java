@@ -26,12 +26,16 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
 
+    List<Item> dataMoznostiStudia = new ArrayList<Item>();
+    boolean isPrinted = false;
 
     EditText editTextId, editTextNazov, editTextObsah;
     ListView listView;
@@ -51,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         editTextId = (EditText) findViewById(R.id.editTextId);
         editTextNazov = (EditText) findViewById(R.id.editTextNazov);
         editTextObsah = (EditText) findViewById(R.id.editTextObsah);
-
         buttonAddUpdate = (Button) findViewById(R.id.buttonAddUpdate);
         listView = (ListView) findViewById(R.id.listViewItems);
 
@@ -81,8 +84,12 @@ public class MainActivity extends AppCompatActivity {
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<String> data = new ArrayList<>(itemList.size());
+                for (Object object : itemList) {
+                    data.add(object != null ? object.toString() : null);
+                }
                 Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudia.class);
-                intent.putExtra("info","Moznosti studia na fakulte prirodnych vied");
+                intent.putExtra("info",data.get(0).toString());
                 startActivity(intent);
             }
         });
@@ -269,7 +276,6 @@ public class MainActivity extends AppCompatActivity {
 
 
             final Item item = itemList.get(position);
-
             textViewName.setText(item.getNazov());
             textViewObsah.setText(item.getObsah());
 
@@ -308,8 +314,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            String text = textViewObsah.getText().toString();
-            System.out.println("Obsah: " + text);
+            if (!isPrinted) {
+                dataMoznostiStudia.addAll(itemList);
+                System.out.println(dataMoznostiStudia);
+                isPrinted = true;
+            }
 
             return listViewItem;
 

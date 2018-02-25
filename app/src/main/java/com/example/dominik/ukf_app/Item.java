@@ -24,5 +24,8 @@ class Item {
         return obsah;
     }
 
-
+    @Override
+    public String toString() {
+        return "Nazov: " + this.nazov + "\n\nObsah:" + this.obsah;
+    }
 }

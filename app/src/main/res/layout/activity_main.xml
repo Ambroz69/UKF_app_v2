@@ -6,7 +6,7 @@
     tools:context="com.example.dominik.ukf_app.MainActivity">
 <!-- visibility gone-->
     <LinearLayout
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
     </LinearLayout>
 <!-- visibility gone -->
     <ListView
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/listViewItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,13 +57,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.dominik.ukf_app.MainActivity"
-        android:visibility="gone">
+        android:visibility="visible">
 
 
 
         <LinearLayout
             android:orientation="vertical"
-            android:background="@drawable/bg_fpv_2"
+            android:background="@drawable/bg_fpv_3"
             android:weightSum="10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
