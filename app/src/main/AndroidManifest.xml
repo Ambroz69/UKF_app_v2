@@ -23,6 +23,7 @@
         <activity android:name=".ActivityPodmienkyPrijatia"></activity>
         <activity android:name=".ActivityStudentskyZivot"></activity>
         <activity android:name=".ActivityMoznostiStudia"></activity>
+        <activity android:name=".ActivityMoznostiStudiaDetail"></activity>
     </application>
 
 </manifest>

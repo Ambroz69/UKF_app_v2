@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonAddUpdate;
 
     List<Item> itemList;
-
+    List<String> data;
     boolean isUpdating = false;
 
     GridLayout mainGrid;
@@ -52,14 +52,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        itemList = new ArrayList<>();
+
         editTextId = (EditText) findViewById(R.id.editTextId);
         editTextNazov = (EditText) findViewById(R.id.editTextNazov);
         editTextObsah = (EditText) findViewById(R.id.editTextObsah);
         buttonAddUpdate = (Button) findViewById(R.id.buttonAddUpdate);
         listView = (ListView) findViewById(R.id.listViewItems);
-
-        itemList = new ArrayList<>();
-
 
         buttonAddUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,16 +79,20 @@ public class MainActivity extends AppCompatActivity {
 
     /* test */
     private void setSingleEvent(GridLayout mainGrid) {
+
+        //karta moznosti studia
         CardView cardView1 = (CardView) mainGrid.getChildAt(0);
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<String> data = new ArrayList<>(itemList.size());
+                data = new ArrayList<>(itemList.size());
                 for (Object object : itemList) {
                     data.add(object != null ? object.toString() : null);
                 }
                 Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudia.class);
-                intent.putExtra("info",data.get(0).toString());
+                for (int i = 0; i < data.size(); i++) {
+                    intent.putExtra("tab"+i,data.get(i).toString());
+                }
                 startActivity(intent);
             }
         });

@@ -1,7 +1,10 @@
 package com.example.dominik.ukf_app;
 
 
-class Item {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+class Item{
     private int id;
     private String nazov;
     private String obsah;
@@ -26,6 +29,6 @@ class Item {
 
     @Override
     public String toString() {
-        return "Nazov: " + this.nazov + "\n\nObsah:" + this.obsah;
+        return "Nazov:\n" + this.nazov + "\n\nObsah:\n" + this.obsah+"\n\n\n\n";
     }
 }

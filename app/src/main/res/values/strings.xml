@@ -1,8 +1,22 @@
 <resources>
     <string name="app_name">UKF</string>
+
+    <!-- uvodne menu -->
     <string name="moznosti_studia">Možnosti štúdia</string>
     <string name="podmienky_prijatia">Podmienky prijatia</string>
     <string name="studentsky_zivot">Študentský život</string>
     <string name="orientacia">Orientácia</string>
+
+    <!-- menu moznosti studia -->
+    <string name="matematika">Matematika</string>
+    <string name="fyzika">Fyzika</string>
+    <string name="informatika">Informatika</string>
+    <string name="chemia">Chémia</string>
+    <string name="ekologia">Ekológia a enviromentalistika</string>
+    <string name="gemologia">Gemólogia</string>
+    <string name="ekonomika">Ekonomika</string>
+    <string name="biologia">Biológia</string>
+    <string name="geografia">Geografia</string>
+    <string name="ucitelstvo">Učiteľstvo</string>
 </resources>
 
