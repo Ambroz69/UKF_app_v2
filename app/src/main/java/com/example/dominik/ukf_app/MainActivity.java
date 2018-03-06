@@ -32,15 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
 
-
     EditText editTextId, editTextNazov, editTextObsah;
-    ListView listView, podmienkyPrijatiaView;
+    ListView listView, podmienkyPrijatiaView, studentskyZivotView;
+    List<Item> itemList, podmienkyPrijatiaList, studentskyZivotList;
+    List<String> dataMoznostiStudia, dataPodmienkyPrijatia, dataStudentskyZivot;
     Button buttonAddUpdate;
-
-    List<Item> itemList;
-    List<Item> podmienkyPrijatiaList;
-    List<String> dataMoznostiStudia;
-    List<String> dataPodmienkyPrijatia;
     boolean isUpdating = false;
 
     GridLayout mainGrid;
@@ -52,14 +48,17 @@ public class MainActivity extends AppCompatActivity {
 
         itemList = new ArrayList<>();
         podmienkyPrijatiaList = new ArrayList<>();
+        studentskyZivotList = new ArrayList<>();
 
         editTextId = (EditText) findViewById(R.id.editTextId);
         editTextNazov = (EditText) findViewById(R.id.editTextNazov);
         editTextObsah = (EditText) findViewById(R.id.editTextObsah);
-        buttonAddUpdate = (Button) findViewById(R.id.buttonAddUpdate);
+
         listView = (ListView) findViewById(R.id.listViewItems);
         podmienkyPrijatiaView = (ListView) findViewById(R.id.listViewPodmienkyPrijatia);
+        studentskyZivotView = (ListView) findViewById(R.id.listViewStudentskyZivot);
 
+        buttonAddUpdate = (Button) findViewById(R.id.buttonAddUpdate);
         buttonAddUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
         readItems();
         readPodmienkyPrijatiaInfo();
+        readStudentskyZivotInfo();
 
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
         setSingleEvent(mainGrid);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //karta podmienky prijatia
         CardView cardView2 = (CardView) mainGrid.getChildAt(1);
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,23 +113,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //karta studentsky zivot
         CardView cardView3 = (CardView) mainGrid.getChildAt(2);
         cardView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ActivityOrientacia.class);
-                intent.putExtra("info","Orientacia na fakulte FPV");
+                dataStudentskyZivot = new ArrayList<>(studentskyZivotList.size());
+                for (Object object : studentskyZivotList) {
+                    dataStudentskyZivot.add(object != null ? object.toString() : null);
+                }
+                Intent intent = new Intent(MainActivity.this,ActivityStudentskyZivot.class);
+                for (int i = 0; i < dataStudentskyZivot.size(); i++) {
+                    intent.putExtra("tab"+i, dataStudentskyZivot.get(i).toString());
+                }
                 startActivity(intent);
             }
         });
-
+        //karta orientacia
         CardView cardView4 = (CardView) mainGrid.getChildAt(3);
         cardView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ActivityStudentskyZivot.class);
-                intent.putExtra("info","Studentsky zivot na fakulte FPV");
+                Intent intent = new Intent(MainActivity.this,ActivityOrientacia.class);
+                intent.putExtra("info","Orientacia na fakulte FPV");
                 startActivity(intent);
             }
         });
@@ -166,6 +172,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void readPodmienkyPrijatiaInfo() {
         PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_PODMIENKY_PRIJATIA, null, CODE_GET_REQUEST);
+        request.execute();
+    }
+
+    private void readStudentskyZivotInfo() {
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_STUDENTSKY_ZIVOT, null, CODE_GET_REQUEST);
         request.execute();
     }
 
@@ -209,36 +220,60 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshItemList(JSONArray items) throws JSONException {
-        if (items.length() == 1) {
-            podmienkyPrijatiaList.clear();
+        ItemAdapter adapter;
 
-            for (int i = 0; i < items.length(); i++) {
-                JSONObject obj = items.getJSONObject(i);
+        //poriesit switch na rozpoznanie tabulky
+        switch (items.length()) {
+            case 1: //tabulka podmienky_prijatia
+                podmienkyPrijatiaList.clear();
 
-                podmienkyPrijatiaList.add(new Item(
-                        obj.getInt("id"),
-                        obj.getString("nazov"),
-                        obj.getString("obsah")
-                ));
-            }
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject obj = items.getJSONObject(i);
 
-            ItemAdapter adapter = new ItemAdapter(podmienkyPrijatiaList);
-            listView.setAdapter(adapter);
-        } else {
-            itemList.clear();
+                    podmienkyPrijatiaList.add(new Item(
+                            obj.getInt("id"),
+                            obj.getString("nazov"),
+                            obj.getString("obsah")
+                    ));
+                }
 
-            for (int i = 0; i < items.length(); i++) {
-                JSONObject obj = items.getJSONObject(i);
+                adapter = new ItemAdapter(podmienkyPrijatiaList);
+                podmienkyPrijatiaView.setAdapter(adapter);
+            break;
 
-                itemList.add(new Item(
-                        obj.getInt("id"),
-                        obj.getString("nazov"),
-                        obj.getString("obsah")
-                ));
-            }
+            case 10: //tabulka moznosti_studia
+                itemList.clear();
 
-            ItemAdapter adapter = new ItemAdapter(itemList);
-            listView.setAdapter(adapter);
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject obj = items.getJSONObject(i);
+
+                    itemList.add(new Item(
+                            obj.getInt("id"),
+                            obj.getString("nazov"),
+                            obj.getString("obsah")
+                    ));
+                }
+
+                adapter = new ItemAdapter(itemList);
+                listView.setAdapter(adapter);
+            break;
+
+            case 11: //tabulka studentsky_zivot
+                studentskyZivotList.clear();
+
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject obj = items.getJSONObject(i);
+
+                    studentskyZivotList.add(new Item(
+                            obj.getInt("id"),
+                            obj.getString("nazov"),
+                            obj.getString("obsah")
+                    ));
+                }
+
+                adapter = new ItemAdapter(studentskyZivotList);
+                studentskyZivotView.setAdapter(adapter);
+                break;
         }
     }
 
@@ -308,6 +343,7 @@ public class MainActivity extends AppCompatActivity {
             TextView textViewDelete = listViewItem.findViewById(R.id.textViewDelete);
 
             TextView textViewPodmienkyPrijatiaObsah = listViewItem.findViewById(R.id.textViewPodmienkyPrijatiaObsah);
+            TextView textViewStudentskyZivotObsah = listViewItem.findViewById(R.id.textViewStudentskyZivotObsah);
 
 
             final Item item = itemList.get(position);
@@ -316,6 +352,9 @@ public class MainActivity extends AppCompatActivity {
 
             final Item item2 = podmienkyPrijatiaList.get(position);
             textViewPodmienkyPrijatiaObsah.setText(item2.getObsah());
+
+            final Item item3 = studentskyZivotList.get(position);
+            textViewStudentskyZivotObsah.setText(item3.getObsah());
 
             textViewUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -57,6 +57,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout" />
 
+    <ListView
+        android:visibility="gone"
+        android:id="@+id/listViewStudentskyZivot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout" />
+
 <!-- visibility gone -->
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

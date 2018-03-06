@@ -18,5 +18,18 @@
     <string name="biologia">Biológia</string>
     <string name="geografia">Geografia</string>
     <string name="ucitelstvo">Učiteľstvo</string>
+
+    <!-- menu studentsky zivot -->
+    <string name="mesto">Mesto vášho štúdia</string>
+    <string name="doprava">Doprava</string>
+    <string name="internet">Pripojenie k internetu</string>
+    <string name="ubytovanie">Ubytovanie</string>
+    <string name="stravovanie">Stravovanie</string>
+    <string name="kultura_sport">Možnosti kultúry a športu</string>
+    <string name="basketbal">Basketbalový klub</string>
+    <string name="fs_ponitran">FS Ponitran</string>
+    <string name="kluby_zdruzenia">Študentské kluby a združenia</string>
+    <string name="upc">Univerzitné pastoračné centrum</string>
+    <string name="erasmus">ERASMUS</string>
 </resources>
 
