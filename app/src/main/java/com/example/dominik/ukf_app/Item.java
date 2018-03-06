@@ -29,6 +29,6 @@ class Item{
 
     @Override
     public String toString() {
-        return "Nazov:\n" + this.nazov + "\n\nObsah:\n" + this.obsah+"\n\n\n\n";
+        return "Nazov:\n" + this.nazov + "\n\nObsah:\n" + this.obsah+"\n";
     }
 }

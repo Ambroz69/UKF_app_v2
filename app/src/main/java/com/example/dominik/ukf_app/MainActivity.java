@@ -26,23 +26,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
 
-    List<Item> dataMoznostiStudia = new ArrayList<Item>();
-    boolean isPrinted = false;
 
     EditText editTextId, editTextNazov, editTextObsah;
-    ListView listView;
+    ListView listView, podmienkyPrijatiaView;
     Button buttonAddUpdate;
 
     List<Item> itemList;
-    List<String> data;
+    List<Item> podmienkyPrijatiaList;
+    List<String> dataMoznostiStudia;
+    List<String> dataPodmienkyPrijatia;
     boolean isUpdating = false;
 
     GridLayout mainGrid;
@@ -53,12 +51,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         itemList = new ArrayList<>();
+        podmienkyPrijatiaList = new ArrayList<>();
 
         editTextId = (EditText) findViewById(R.id.editTextId);
         editTextNazov = (EditText) findViewById(R.id.editTextNazov);
         editTextObsah = (EditText) findViewById(R.id.editTextObsah);
         buttonAddUpdate = (Button) findViewById(R.id.buttonAddUpdate);
         listView = (ListView) findViewById(R.id.listViewItems);
+        podmienkyPrijatiaView = (ListView) findViewById(R.id.listViewPodmienkyPrijatia);
 
         buttonAddUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         readItems();
+        readPodmienkyPrijatiaInfo();
 
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
         setSingleEvent(mainGrid);
@@ -85,13 +86,13 @@ public class MainActivity extends AppCompatActivity {
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                data = new ArrayList<>(itemList.size());
+                dataMoznostiStudia = new ArrayList<>(itemList.size());
                 for (Object object : itemList) {
-                    data.add(object != null ? object.toString() : null);
+                    dataMoznostiStudia.add(object != null ? object.toString() : null);
                 }
                 Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudia.class);
-                for (int i = 0; i < data.size(); i++) {
-                    intent.putExtra("tab"+i,data.get(i).toString());
+                for (int i = 0; i < dataMoznostiStudia.size(); i++) {
+                    intent.putExtra("tab"+i, dataMoznostiStudia.get(i).toString());
                 }
                 startActivity(intent);
             }
@@ -101,8 +102,14 @@ public class MainActivity extends AppCompatActivity {
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dataPodmienkyPrijatia = new ArrayList<>(podmienkyPrijatiaList.size());
+                for (Object object : podmienkyPrijatiaList) {
+                    dataPodmienkyPrijatia.add(object != null ? object.toString() : null);
+                }
                 Intent intent = new Intent(MainActivity.this,ActivityPodmienkyPrijatia.class);
-                intent.putExtra("info","Podmienky prijatia na FPV UKF");
+                for (int i = 0; i < dataPodmienkyPrijatia.size(); i++) {
+                    intent.putExtra("info", dataPodmienkyPrijatia.get(i).toString());
+                }
                 startActivity(intent);
             }
         });
@@ -121,8 +128,8 @@ public class MainActivity extends AppCompatActivity {
         cardView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudia.class);
-                intent.putExtra("info","Moznosti studia na fakulte prirodnych vied");
+                Intent intent = new Intent(MainActivity.this,ActivityStudentskyZivot.class);
+                intent.putExtra("info","Studentsky zivot na fakulte FPV");
                 startActivity(intent);
             }
         });
@@ -154,6 +161,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void readItems() {
         PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_ITEMS, null, CODE_GET_REQUEST);
+        request.execute();
+    }
+
+    private void readPodmienkyPrijatiaInfo() {
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_PODMIENKY_PRIJATIA, null, CODE_GET_REQUEST);
         request.execute();
     }
 
@@ -197,21 +209,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshItemList(JSONArray items) throws JSONException {
-        itemList.clear();
+        if (items.length() == 1) {
+            podmienkyPrijatiaList.clear();
 
-        for (int i = 0; i < items.length(); i++) {
-            JSONObject obj = items.getJSONObject(i);
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject obj = items.getJSONObject(i);
 
-            itemList.add(new Item(
-                    obj.getInt("id"),
-                    obj.getString("nazov"),
-                    obj.getString("obsah")
-            ));
+                podmienkyPrijatiaList.add(new Item(
+                        obj.getInt("id"),
+                        obj.getString("nazov"),
+                        obj.getString("obsah")
+                ));
+            }
+
+            ItemAdapter adapter = new ItemAdapter(podmienkyPrijatiaList);
+            listView.setAdapter(adapter);
+        } else {
+            itemList.clear();
+
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject obj = items.getJSONObject(i);
+
+                itemList.add(new Item(
+                        obj.getInt("id"),
+                        obj.getString("nazov"),
+                        obj.getString("obsah")
+                ));
+            }
+
+            ItemAdapter adapter = new ItemAdapter(itemList);
+            listView.setAdapter(adapter);
         }
-
-        ItemAdapter adapter = new ItemAdapter(itemList);
-        listView.setAdapter(adapter);
     }
+
 
     private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
         String url;
@@ -277,10 +307,15 @@ public class MainActivity extends AppCompatActivity {
             TextView textViewUpdate = listViewItem.findViewById(R.id.textViewUpdate);
             TextView textViewDelete = listViewItem.findViewById(R.id.textViewDelete);
 
+            TextView textViewPodmienkyPrijatiaObsah = listViewItem.findViewById(R.id.textViewPodmienkyPrijatiaObsah);
+
 
             final Item item = itemList.get(position);
             textViewName.setText(item.getNazov());
             textViewObsah.setText(item.getObsah());
+
+            final Item item2 = podmienkyPrijatiaList.get(position);
+            textViewPodmienkyPrijatiaObsah.setText(item2.getObsah());
 
             textViewUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -316,12 +351,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
-            if (!isPrinted) {
-                dataMoznostiStudia.addAll(itemList);
-                System.out.println(dataMoznostiStudia);
-                isPrinted = true;
-            }
 
             return listViewItem;
 

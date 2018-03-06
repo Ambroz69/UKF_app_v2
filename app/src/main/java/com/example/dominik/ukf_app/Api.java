@@ -9,6 +9,8 @@ public class Api {
     public static final String URL_READ_ITEMS = ROOT_URL + "getitems";
     public static final String URL_UPDATE_ITEM = ROOT_URL + "updateitem";
     public static final String URL_DELETE_ITEM = ROOT_URL + "deleteitem&id=";
+    public static final String URL_READ_PODMIENKY_PRIJATIA = ROOT_URL + "getpodmienkyprijatiainfo";
+
 
 }
 

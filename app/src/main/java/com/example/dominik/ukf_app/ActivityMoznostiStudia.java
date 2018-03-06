@@ -28,7 +28,7 @@ public class ActivityMoznostiStudia extends AppCompatActivity {
         tab = new String[tabCount];
 
         if(getIntent() != null) {
-            for (int i = 0; i<tabCount; i++) {
+            for (int i = 0; i < tabCount; i++) {
                 tab[i] = ""+i;
                 tab[i] = getIntent().getStringExtra("tab"+i);
             }
