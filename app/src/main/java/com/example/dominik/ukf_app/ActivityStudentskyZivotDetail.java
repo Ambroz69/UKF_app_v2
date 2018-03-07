@@ -2,6 +2,7 @@ package com.example.dominik.ukf_app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.widget.TextView;
 
 /**
@@ -20,7 +21,7 @@ class ActivityStudentskyZivotDetail extends AppCompatActivity{
         if(getIntent() != null)
         {
             String info = getIntent().getStringExtra("info");
-            moznostiStudiaDetail.setText(info);
+            moznostiStudiaDetail.setText(Html.fromHtml(info));
         }
 
     }

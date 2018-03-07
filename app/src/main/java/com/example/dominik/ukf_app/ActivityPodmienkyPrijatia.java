@@ -2,6 +2,7 @@ package com.example.dominik.ukf_app;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.TextView;
 
 
@@ -16,7 +17,7 @@ public class ActivityPodmienkyPrijatia extends AppCompatActivity {
         if(getIntent() != null)
         {
             String info = getIntent().getStringExtra("info");
-            infoPodmienkyPrijatia.setText(info);
+            infoPodmienkyPrijatia.setText(Html.fromHtml(info));
         }
     }
 
