@@ -5,13 +5,13 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context="com.example.dominik.ukf_app.MainActivity"
+android:background="@color/ukf_green"
 android:visibility="visible">
 
 
 
     <LinearLayout
         android:orientation="vertical"
-        android:background="@color/ukf_green"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
