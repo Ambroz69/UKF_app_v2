@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dominik.ukf_app.DB_connect.Api;
+import com.example.dominik.ukf_app.DB_connect.CalendarEvent;
 import com.example.dominik.ukf_app.DB_connect.Item;
 import com.example.dominik.ukf_app.DB_connect.RequestHandler;
 
@@ -39,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextId, editTextNazov, editTextObsah;
     ListView listView, podmienkyPrijatiaView, studentskyZivotView;
     List<Item> itemList, podmienkyPrijatiaList, studentskyZivotList;
-    List<String> dataMoznostiStudia, dataPodmienkyPrijatia, dataStudentskyZivot;
+    List<CalendarEvent> udalostiList;
+    List<String> dataMoznostiStudia, dataPodmienkyPrijatia, dataStudentskyZivot, dataUdalosti;
     Button buttonAddUpdate;
     boolean isUpdating = false;
 
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         itemList = new ArrayList<>();
         podmienkyPrijatiaList = new ArrayList<>();
         studentskyZivotList = new ArrayList<>();
+        udalostiList = new ArrayList<>();
 
         editTextId = (EditText) findViewById(R.id.editTextId);
         editTextNazov = (EditText) findViewById(R.id.editTextNazov);
@@ -74,8 +78,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         readItems();
-        readPodmienkyPrijatiaInfo();
-        readStudentskyZivotInfo();
 
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
         setSingleEvent(mainGrid);
@@ -83,8 +85,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calendarButton(View view) {
-        Intent intent = new Intent(MainActivity.this, ActivityCalendar.class);
-        startActivity(intent);
+        Intent intent = new Intent(MainActivity.this,ActivityCalendar.class);
+        intent.putParcelableArrayListExtra("udalosti", (ArrayList<? extends Parcelable>) udalostiList);
+        getApplicationContext().startActivity(intent);
     }
 
     /* test */
@@ -151,19 +154,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void readItems() {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_ITEMS, null, CODE_GET_REQUEST);
-        request.execute();
+        PerformNetworkRequest request1 = new PerformNetworkRequest(Api.URL_READ_ITEMS, null, CODE_GET_REQUEST);
+        request1.execute();
+
+        PerformNetworkRequest request2 = new PerformNetworkRequest(Api.URL_READ_PODMIENKY_PRIJATIA, null, CODE_GET_REQUEST);
+        request2.execute();
+
+        PerformNetworkRequest request3 = new PerformNetworkRequest(Api.URL_READ_STUDENTSKY_ZIVOT, null, CODE_GET_REQUEST);
+        request3.execute();
+
+        PerformNetworkRequest request4 = new PerformNetworkRequest(Api.URL_READ_UDALOSTI, null, CODE_GET_REQUEST);
+        request4.execute();
+
+
     }
 
-    private void readPodmienkyPrijatiaInfo() {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_PODMIENKY_PRIJATIA, null, CODE_GET_REQUEST);
-        request.execute();
-    }
-
-    private void readStudentskyZivotInfo() {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_STUDENTSKY_ZIVOT, null, CODE_GET_REQUEST);
-        request.execute();
-    }
     /* CRUD v mobile*/
     private void createItem() {
         String nazov = editTextNazov.getText().toString().trim();
@@ -229,33 +234,12 @@ public class MainActivity extends AppCompatActivity {
     }
     /*CRUD v mobile end*/
 
-    private void refreshItemList(JSONArray items) throws JSONException {
+    private void refreshItemList(JSONArray items, String message) throws JSONException {
         ItemAdapter adapter;
-        //JSONObject tmp = items.getJSONObject(0).get
-        //poriesit switch na rozpoznanie tabulky
-        switch (items.length()) {
-            case 1: //tabulka podmienky_prijatia
-                podmienkyPrijatiaList.clear();
 
-                for (int i = 0; i < items.length(); i++) {
-                    JSONObject obj = items.getJSONObject(i);
-
-                    podmienkyPrijatiaList.add(new Item(
-                            obj.getInt("id"),
-                            obj.getString("nazov"),
-                            obj.getString("obsah")
-                    ));
-                }
-
-                adapter = new ItemAdapter(podmienkyPrijatiaList);
-                podmienkyPrijatiaView.setAdapter(adapter);
-            break;
-
-
-
-            case 10: //tabulka moznosti_studia
+        switch(message) {
+            case "moznosti_studia":
                 itemList.clear();
-
                 for (int i = 0; i < items.length(); i++) {
                     JSONObject obj = items.getJSONObject(i);
 
@@ -265,14 +249,27 @@ public class MainActivity extends AppCompatActivity {
                             obj.getString("obsah")
                     ));
                 }
-
                 adapter = new ItemAdapter(itemList);
                 listView.setAdapter(adapter);
             break;
 
-            case 11: //tabulka studentsky_zivot
-                studentskyZivotList.clear();
+            case "podmienky_prijatia":
+                podmienkyPrijatiaList.clear();
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject obj = items.getJSONObject(i);
 
+                    podmienkyPrijatiaList.add(new Item(
+                            obj.getInt("id"),
+                            obj.getString("nazov"),
+                            obj.getString("obsah")
+                    ));
+                }
+                adapter = new ItemAdapter(podmienkyPrijatiaList);
+                podmienkyPrijatiaView.setAdapter(adapter);
+            break;
+
+            case "studentsky_zivot":
+                studentskyZivotList.clear();
                 for (int i = 0; i < items.length(); i++) {
                     JSONObject obj = items.getJSONObject(i);
 
@@ -282,10 +279,26 @@ public class MainActivity extends AppCompatActivity {
                             obj.getString("obsah")
                     ));
                 }
-
                 adapter = new ItemAdapter(studentskyZivotList);
                 studentskyZivotView.setAdapter(adapter);
-                break;
+            break;
+
+            case "udalosti":
+                udalostiList.clear();
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject obj = items.getJSONObject(i);
+
+                    udalostiList.add(new CalendarEvent (
+                            obj.getString("id"),
+                            obj.getString("nazov"),
+                            obj.getString("datum"),
+                            obj.getString("popis")
+                    ));
+                }
+            break;
+
+            default:
+                throw new IllegalArgumentException("Invalid argument: " + message);
         }
     }
 
@@ -312,8 +325,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject object = new JSONObject(s);
                 if (!object.getBoolean("error")) {
-                    Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
-                    refreshItemList(object.getJSONArray("items"));
+                    //Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
+                    refreshItemList(object.getJSONArray("items"), object.getString("message"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
