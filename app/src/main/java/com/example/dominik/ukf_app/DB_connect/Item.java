@@ -1,10 +1,7 @@
-package com.example.dominik.ukf_app;
+package com.example.dominik.ukf_app.DB_connect;
 
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-class Item{
+public class Item{
     private int id;
     private String nazov;
     private String obsah;

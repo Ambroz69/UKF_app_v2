@@ -19,6 +19,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dominik.ukf_app.DB_connect.Api;
+import com.example.dominik.ukf_app.DB_connect.Item;
+import com.example.dominik.ukf_app.DB_connect.RequestHandler;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -76,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
         setSingleEvent(mainGrid);
 
+    }
+
+    public void calendarButton(View view) {
+        Intent intent = new Intent(MainActivity.this, ActivityCalendar.class);
+        startActivity(intent);
     }
 
     /* test */
@@ -141,6 +150,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void readItems() {
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_ITEMS, null, CODE_GET_REQUEST);
+        request.execute();
+    }
+
+    private void readPodmienkyPrijatiaInfo() {
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_PODMIENKY_PRIJATIA, null, CODE_GET_REQUEST);
+        request.execute();
+    }
+
+    private void readStudentskyZivotInfo() {
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_STUDENTSKY_ZIVOT, null, CODE_GET_REQUEST);
+        request.execute();
+    }
+    /* CRUD v mobile*/
     private void createItem() {
         String nazov = editTextNazov.getText().toString().trim();
         String obsah = editTextObsah.getText().toString().trim();
@@ -162,21 +186,6 @@ public class MainActivity extends AppCompatActivity {
         params.put("obsah", obsah);
 
         PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_CREATE_ITEM, params, CODE_POST_REQUEST);
-        request.execute();
-    }
-
-    private void readItems() {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_ITEMS, null, CODE_GET_REQUEST);
-        request.execute();
-    }
-
-    private void readPodmienkyPrijatiaInfo() {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_PODMIENKY_PRIJATIA, null, CODE_GET_REQUEST);
-        request.execute();
-    }
-
-    private void readStudentskyZivotInfo() {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_READ_STUDENTSKY_ZIVOT, null, CODE_GET_REQUEST);
         request.execute();
     }
 
@@ -218,10 +227,11 @@ public class MainActivity extends AppCompatActivity {
         PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_DELETE_ITEM + id, null, CODE_GET_REQUEST);
         request.execute();
     }
+    /*CRUD v mobile end*/
 
     private void refreshItemList(JSONArray items) throws JSONException {
         ItemAdapter adapter;
-
+        //JSONObject tmp = items.getJSONObject(0).get
         //poriesit switch na rozpoznanie tabulky
         switch (items.length()) {
             case 1: //tabulka podmienky_prijatia
@@ -240,6 +250,8 @@ public class MainActivity extends AppCompatActivity {
                 adapter = new ItemAdapter(podmienkyPrijatiaList);
                 podmienkyPrijatiaView.setAdapter(adapter);
             break;
+
+
 
             case 10: //tabulka moznosti_studia
                 itemList.clear();

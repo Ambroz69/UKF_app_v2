@@ -9,7 +9,7 @@ import android.widget.TextView;
  * Created by Dominik on 06.03.2018.
  */
 
-class ActivityStudentskyZivotDetail extends AppCompatActivity{
+public class ActivityStudentskyZivotDetail extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

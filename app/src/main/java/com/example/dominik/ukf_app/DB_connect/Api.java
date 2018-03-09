@@ -1,4 +1,4 @@
-package com.example.dominik.ukf_app;
+package com.example.dominik.ukf_app.DB_connect;
 
 
 public class Api {

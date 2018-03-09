@@ -74,13 +74,18 @@
         android:visibility="visible">
 
 
-
         <LinearLayout
             android:orientation="vertical"
             android:background="@drawable/bg_fpv_3"
             android:weightSum="10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/calendarButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="calendarButton"/>
 
             <RelativeLayout
                 android:layout_weight="2"
