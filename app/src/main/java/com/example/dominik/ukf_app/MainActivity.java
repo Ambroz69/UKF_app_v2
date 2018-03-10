@@ -18,12 +18,12 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.dominik.ukf_app.DB_connect.Api;
-import com.example.dominik.ukf_app.DB_connect.CalendarEvent;
-import com.example.dominik.ukf_app.DB_connect.Item;
-import com.example.dominik.ukf_app.DB_connect.RequestHandler;
+import com.example.dominik.ukf_app.calendar.ActivityCalendar;
+import com.example.dominik.ukf_app.db_connect.Api;
+import com.example.dominik.ukf_app.db_connect.CalendarEvent;
+import com.example.dominik.ukf_app.db_connect.Item;
+import com.example.dominik.ukf_app.db_connect.RequestHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;

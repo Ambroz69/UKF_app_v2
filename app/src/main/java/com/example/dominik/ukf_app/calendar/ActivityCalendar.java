@@ -1,4 +1,4 @@
-package com.example.dominik.ukf_app;
+package com.example.dominik.ukf_app.calendar;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,17 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.widget.TextView;
 
-import com.example.dominik.ukf_app.DB_connect.CalendarEvent;
+import com.example.dominik.ukf_app.R;
+import com.example.dominik.ukf_app.db_connect.CalendarEvent;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
-import com.prolificinteractive.materialcalendarview.DayViewDecorator;
-import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -27,6 +25,7 @@ import java.util.List;
 public class ActivityCalendar extends AppCompatActivity {
 
     private List<CalendarEvent> udalostiList;
+    private List<String> events;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,9 +41,13 @@ public class ActivityCalendar extends AppCompatActivity {
 
         udalostiList = new ArrayList<CalendarEvent>();
         udalostiList = (ArrayList) getIntent().getParcelableArrayListExtra("udalosti");
+        events = new ArrayList<>();
+        for (int i = 0; i < udalostiList.size(); i++) {
+            events.add(udalostiList.get(i).getDatum());
+        }
 
-
-
+        calendar.addDecorator(new CurrentDayDecorator(this));
+        calendar.addDecorator(new EventDecorator(this, events));
         calendar.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -71,13 +74,13 @@ public class ActivityCalendar extends AppCompatActivity {
                 //ked sa nasla zhoda v datume z DB
                 for (int i = 0; i < udalostiList.size(); i++) {
                     if (udalostiList.get(i).getDatum().equals(datum)) {
-                        eventTitle = "<strong>Nazov:</strong> " + udalostiList.get(i).getNazov();
-                        eventDate = "<strong>Datum</strong>: " + udalostiList.get(i).getDatum();
+                        eventTitle = "<strong>Názov:</strong> " + udalostiList.get(i).getNazov();
+                        eventDate = "<strong>Dátum</strong>: " + udalostiList.get(i).getDatum();
                         eventDescription = "<strong>Popis:</strong> " + udalostiList.get(i).getPopis();
                         break;
                     } else {
-                       eventDate ="<strong>Datum:</strong> " + datum;
-                       eventTitle = "Ziadna udalost";
+                       eventDate ="<strong>Dátum:</strong> " + datum;
+                       eventTitle = "Žiadna udalosť";
                        eventDescription = "";
                     }
                 }

@@ -1,4 +1,4 @@
-package com.example.dominik.ukf_app.DB_connect;
+package com.example.dominik.ukf_app.db_connect;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
