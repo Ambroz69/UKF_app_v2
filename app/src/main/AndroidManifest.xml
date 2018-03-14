@@ -27,6 +27,7 @@
         <activity android:name=".ActivityMoznostiStudiaDetail"></activity>
         <activity android:name=".ActivityMoznostiStudiaStudijnyProgram"></activity>
         <activity android:name=".calendar.ActivityCalendar"></activity>
+        <activity android:name=".calendar.ActivityEventList"></activity>
     </application>
 
 </manifest>

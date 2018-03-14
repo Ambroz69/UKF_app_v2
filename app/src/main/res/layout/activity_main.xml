@@ -14,33 +14,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <EditText
-            android:id="@+id/editTextId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-        <EditText
-            android:id="@+id/editTextNazov"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="Názov" />
-
-        <EditText
-            android:id="@+id/editTextObsah"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="Obsah" />
-
-        <Button
-            android:id="@+id/buttonAddUpdate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pridať" />
     </LinearLayout>
 <!-- visibility gone -->
     <ListView
@@ -59,10 +32,10 @@
 
     <ListView
         android:visibility="gone"
-    android:id="@+id/listViewStudentskyZivot"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/linearLayout" />
+        android:id="@+id/listViewStudentskyZivot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout" />
 
     <!-- visibility gone -->
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"

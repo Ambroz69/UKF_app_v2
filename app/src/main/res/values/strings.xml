@@ -28,6 +28,8 @@
 
     <string name="viac_info">Viac informácií o študijnom programe</string>
 
+    <string name="udalosti_zoznam">Zobraziť všetky udalosti</string>
+
     <!-- menu studentsky zivot -->
     <string name="mesto">Mesto vášho štúdia</string>
     <string name="doprava">Doprava</string>

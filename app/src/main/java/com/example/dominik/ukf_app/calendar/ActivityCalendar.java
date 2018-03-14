@@ -1,12 +1,16 @@
 package com.example.dominik.ukf_app.calendar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.view.View;
 import android.widget.TextView;
 
+import com.example.dominik.ukf_app.MainActivity;
 import com.example.dominik.ukf_app.R;
 import com.example.dominik.ukf_app.db_connect.CalendarEvent;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -95,5 +99,11 @@ public class ActivityCalendar extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void eventListButton(View view) {
+        Intent intent = new Intent(ActivityCalendar.this,ActivityEventList.class);
+        intent.putParcelableArrayListExtra("udalosti", (ArrayList<? extends Parcelable>) udalostiList);
+        startActivity(intent);
     }
 }

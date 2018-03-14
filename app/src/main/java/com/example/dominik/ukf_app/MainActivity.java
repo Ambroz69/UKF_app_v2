@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
     List<CalendarEvent> udalostiList;
     List<StudijnyProgram> studijnyProgramList;
     List<String> dataMoznostiStudia, dataPodmienkyPrijatia, dataStudentskyZivot, dataStudijnyProgram;
-    Button buttonAddUpdate;
-    boolean isUpdating = false;
 
     GridLayout mainGrid;
     private boolean isReadingDB = true;
@@ -65,25 +63,9 @@ public class MainActivity extends AppCompatActivity {
         udalostiList = new ArrayList<>();
         studijnyProgramList = new ArrayList<>();
 
-        editTextId = (EditText) findViewById(R.id.editTextId);
-        editTextNazov = (EditText) findViewById(R.id.editTextNazov);
-        editTextObsah = (EditText) findViewById(R.id.editTextObsah);
-
         listView = (ListView) findViewById(R.id.listViewItems);
         podmienkyPrijatiaView = (ListView) findViewById(R.id.listViewPodmienkyPrijatia);
         studentskyZivotView = (ListView) findViewById(R.id.listViewStudentskyZivot);
-
-        buttonAddUpdate = (Button) findViewById(R.id.buttonAddUpdate);
-        buttonAddUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isUpdating) {
-                    updateItem();
-                } else {
-                    createItem();
-                }
-            }
-        });
 
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
 
@@ -91,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         setSingleEvent(mainGrid);
         if (!isReadingDB)
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
 
     }
 
@@ -178,71 +159,6 @@ public class MainActivity extends AppCompatActivity {
 
         isReadingDB = false;
     }
-
-    /* CRUD v mobile*/
-    private void createItem() {
-        String nazov = editTextNazov.getText().toString().trim();
-        String obsah = editTextObsah.getText().toString().trim();
-
-        if (TextUtils.isEmpty(nazov)) {
-            editTextNazov.setError("Prosím zadajte názov");
-            editTextNazov.requestFocus();
-            return;
-        }
-        if (TextUtils.isEmpty(obsah)) {
-            editTextObsah.setError("Prosím zadajte obsah");
-            editTextObsah.requestFocus();
-            return;
-        }
-
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("nazov", nazov);
-        params.put("obsah", obsah);
-
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_CREATE_ITEM, params, CODE_POST_REQUEST);
-        request.execute();
-    }
-
-    private void updateItem() {
-        String id = editTextId.getText().toString();
-        String nazov = editTextNazov.getText().toString().trim();
-        String obsah = editTextObsah.getText().toString().trim();
-
-
-
-        if (TextUtils.isEmpty(nazov)) {
-            editTextNazov.setError("Prosím zadajte názov");
-            editTextNazov.requestFocus();
-            return;
-        }
-        if (TextUtils.isEmpty(obsah)) {
-            editTextObsah.setError("Prosím zadajte obsah");
-            editTextObsah.requestFocus();
-            return;
-        }
-
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("id", id);
-        params.put("nazov", nazov);
-        params.put("obsah", obsah);
-
-
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_UPDATE_ITEM, params, CODE_POST_REQUEST);
-        request.execute();
-
-        buttonAddUpdate.setText("Pridať");
-        editTextNazov.setText("");
-
-        isUpdating = false;
-    }
-
-    private void deleteItem(int id) {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_DELETE_ITEM + id, null, CODE_GET_REQUEST);
-        request.execute();
-    }
-    /*CRUD v mobile end*/
 
     private void refreshItemList(JSONArray items, String message) throws JSONException {
         ItemAdapter adapter;
@@ -381,7 +297,6 @@ public class MainActivity extends AppCompatActivity {
             this.itemList = itemList;
         }
 
-
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
@@ -389,60 +304,12 @@ public class MainActivity extends AppCompatActivity {
 
             TextView textViewObsah = listViewItem.findViewById(R.id.textViewObsah);
             TextView textViewName = listViewItem.findViewById(R.id.textViewName);
-            TextView textViewUpdate = listViewItem.findViewById(R.id.textViewUpdate);
-            TextView textViewDelete = listViewItem.findViewById(R.id.textViewDelete);
-
-            TextView textViewPodmienkyPrijatiaObsah = listViewItem.findViewById(R.id.textViewPodmienkyPrijatiaObsah);
-            TextView textViewStudentskyZivotObsah = listViewItem.findViewById(R.id.textViewStudentskyZivotObsah);
-
 
             final Item item = itemList.get(position);
             textViewName.setText(item.getNazov());
             textViewObsah.setText(item.getObsah());
 
-            final Item item2 = podmienkyPrijatiaList.get(position);
-            textViewPodmienkyPrijatiaObsah.setText(item2.getObsah());
-
-            final Item item3 = studentskyZivotList.get(position);
-            textViewStudentskyZivotObsah.setText(item3.getObsah());
-
-            textViewUpdate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    isUpdating = true;
-                    editTextId.setText(String.valueOf(item.getId()));
-                    editTextNazov.setText(item.getNazov());
-                    editTextObsah.setText(item.getObsah());
-                    buttonAddUpdate.setText("Upraviť");
-                }
-            });
-
-            textViewDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-                    builder.setTitle("Vymazať " + item.getNazov() + "?")
-                            .setMessage("Naozaj chcete vymazať položku?")
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    deleteItem(item.getId());
-                                }
-                            })
-                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                            })
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-
-                }
-            });
-
             return listViewItem;
-
         }
     }
 
