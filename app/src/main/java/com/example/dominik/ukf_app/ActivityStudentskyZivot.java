@@ -26,7 +26,7 @@ public class ActivityStudentskyZivot extends AppCompatActivity {
         if(getIntent() != null) {
             for (int i = 0; i < tabCount; i++) {
                 tab[i] = ""+i;
-                tab[i] = getIntent().getStringExtra("tab"+i);
+                tab[i] = getIntent().getStringExtra("detailInfo"+i);
             }
         }
 

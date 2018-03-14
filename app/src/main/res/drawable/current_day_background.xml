@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="ring"
     android:innerRadius="0dp"
-    android:thickness="25dp"
+    android:thickness="20dp"
     android:tint="@color/ukf_gray"
     android:useLevel="false">
 

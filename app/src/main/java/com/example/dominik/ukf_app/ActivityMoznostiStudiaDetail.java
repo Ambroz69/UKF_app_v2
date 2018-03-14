@@ -20,8 +20,8 @@ public class ActivityMoznostiStudiaDetail extends AppCompatActivity {
         TextView moznostiStudiaDetail = (TextView)findViewById(R.id.moznostiStudiaDetail);
         if(getIntent() != null)
         {
-            String info = getIntent().getStringExtra("info");
-            moznostiStudiaDetail.setText(Html.fromHtml(info));
+            String detail = getIntent().getStringExtra("detail");
+            moznostiStudiaDetail.setText(Html.fromHtml(detail));
         }
 
     }

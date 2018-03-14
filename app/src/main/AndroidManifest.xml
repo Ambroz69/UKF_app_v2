@@ -23,8 +23,9 @@
         <activity android:name=".ActivityPodmienkyPrijatia"></activity>
         <activity android:name=".ActivityStudentskyZivot"></activity>
         <activity android:name=".ActivityStudentskyZivotDetail"></activity>
-        <activity android:name=".ActivityMoznostiStudia"></activity>
+        <activity android:name=".ActivityMoznostiStudiaMenu"></activity>
         <activity android:name=".ActivityMoznostiStudiaDetail"></activity>
+        <activity android:name=".ActivityMoznostiStudiaStudijnyProgram"></activity>
         <activity android:name=".calendar.ActivityCalendar"></activity>
     </application>
 

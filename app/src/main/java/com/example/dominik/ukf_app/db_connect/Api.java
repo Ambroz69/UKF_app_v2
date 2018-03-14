@@ -12,6 +12,7 @@ public class Api {
     public static final String URL_READ_PODMIENKY_PRIJATIA = ROOT_URL + "getpodmienkyprijatiainfo";
     public static final String URL_READ_STUDENTSKY_ZIVOT = ROOT_URL + "getstudentskyzivotinfo";
     public static final String URL_READ_UDALOSTI = ROOT_URL + "getudalostiinfo";
+    public static final String URL_READ_STUDIJNY_PROGRAM = ROOT_URL + "getstudijnyprograminfo";
 
 
 

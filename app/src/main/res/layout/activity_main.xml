@@ -59,81 +59,99 @@
 
     <ListView
         android:visibility="gone"
-        android:id="@+id/listViewStudentskyZivot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayout" />
+    android:id="@+id/listViewStudentskyZivot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/linearLayout" />
 
-<!-- visibility gone -->
+    <!-- visibility gone -->
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.dominik.ukf_app.MainActivity"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:background="@color/ukf_gray">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/calendarButton"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Udalosti"
-                android:backgroundTint="@android:color/white"
-                android:onClick="calendarButton"/>
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:onClick="calendarButton"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardCornerRadius="8dp"
+                >
+
+                <LinearLayout
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/udalosti"
+                        android:textColor="@android:color/black"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
             <LinearLayout
                 android:orientation="vertical"
-                android:background="@drawable/bg_fpv_3"
-                android:weightSum="10"
+                android:background="@color/ukf_gray"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
+                android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:layout_weight="2"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp">
+                    android:layout_height="20dp">
                 </RelativeLayout>
 
                 <GridLayout
                     android:id="@+id/mainGrid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alignmentMode="alignMargins"
                     android:columnCount="2"
                     android:rowCount="2"
-                    android:alignmentMode="alignMargins"
                     android:columnOrderPreserved="false"
-                    android:layout_weight="8"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
                     <!-- Row 1 -->
 
                     <!-- Column 1 -->
                     <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        app:cardElevation="@dimen/card_elevation"
                         app:cardCornerRadius="8dp"
-                        >
+                        app:cardElevation="@dimen/card_elevation">
 
                         <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="16dp"
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:orientation="vertical">
                             <!--
                                                 <ImageView
                                                     android:src="@drawable/botanika"
@@ -142,13 +160,13 @@
                                                     android:layout_height="wrap_content" />
                             -->
                             <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:text="@string/moznosti_studia"
                                 android:textAlignment="center"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -156,23 +174,20 @@
 
                     <!-- Column 2 -->
                     <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        app:cardElevation="@dimen/card_elevation"
                         app:cardCornerRadius="8dp"
-                        >
+                        app:cardElevation="@dimen/card_elevation">
 
                         <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="16dp"
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:orientation="vertical">
                             <!--
                                                 <ImageView
                                                     android:src="@drawable/ekologia"
@@ -182,7 +197,7 @@
                             -->
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="105dp"
+                                android:layout_height="wrap_content"
                                 android:text="@string/podmienky_prijatia"
                                 android:textAlignment="center"
                                 android:textColor="@android:color/black"
@@ -198,23 +213,20 @@
 
                     <!-- Column 1 -->
                     <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        app:cardElevation="@dimen/card_elevation"
                         app:cardCornerRadius="8dp"
-                        >
+                        app:cardElevation="@dimen/card_elevation">
 
                         <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="16dp"
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:orientation="vertical">
                             <!--
                                                 <ImageView
                                                     android:src="@drawable/fyzika"
@@ -223,13 +235,13 @@
                                                     android:layout_height="wrap_content" />
                             -->
                             <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:text="@string/studentsky_zivot"
                                 android:textAlignment="center"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -237,23 +249,20 @@
 
                     <!-- Column 2 -->
                     <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        app:cardElevation="@dimen/card_elevation"
                         app:cardCornerRadius="8dp"
-                        >
+                        app:cardElevation="@dimen/card_elevation">
 
                         <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_margin="16dp"
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:orientation="vertical">
                             <!--
                                                 <ImageView
                                                     android:src="@drawable/geografia"
@@ -262,13 +271,13 @@
                                                     android:layout_height="wrap_content" />
                             -->
                             <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:text="@string/orientacia"
                                 android:textAlignment="center"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 

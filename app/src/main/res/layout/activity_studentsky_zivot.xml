@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dominik.ukf_app.MainActivity"
+    tools:context="com.example.dominik.ukf_app.ActivityStudentskyZivot"
     android:visibility="visible">
 
 
@@ -59,7 +59,7 @@
                         android:text="@string/mesto"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -94,7 +94,7 @@
                         android:text="@string/doprava"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -126,7 +126,7 @@
                         android:text="@string/internet"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -159,7 +159,7 @@
                         android:text="@string/ubytovanie"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -192,7 +192,7 @@
                         android:text="@string/stravovanie"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -225,7 +225,7 @@
                         android:text="@string/kultura_sport"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -258,7 +258,7 @@
                         android:text="@string/basketbal"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -291,7 +291,7 @@
                         android:text="@string/fs_ponitran"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -324,7 +324,7 @@
                         android:text="@string/kluby_zdruzenia"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -357,7 +357,7 @@
                         android:text="@string/upc"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -390,7 +390,7 @@
                         android:text="@string/erasmus"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_menu_karta"
+                        android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />

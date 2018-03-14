@@ -8,19 +8,19 @@ import android.os.Parcelable;
  */
 
 public class CalendarEvent implements Parcelable{
-    private String id;
+    private int id;
     private String nazov;
     private String datum;
     private String popis;
 
-    public CalendarEvent(String id, String nazov, String datum, String popis) {
+    public CalendarEvent(int id, String nazov, String datum, String popis) {
         this.id = id;
         this.nazov = nazov;
         this.datum = datum;
         this.popis = popis;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -41,7 +41,7 @@ public class CalendarEvent implements Parcelable{
 
         in.readStringArray(data);
         // the order needs to be the same as in writeToParcel() method
-        this.id = data[0];
+        this.id = Integer.parseInt(data[0]);
         this.nazov = data[1];
         this.datum = data[2];
         this.popis = data[3];
@@ -55,7 +55,7 @@ public class CalendarEvent implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringArray(new String[] {
-                this.id,
+                String.valueOf(this.id),
                 this.nazov,
                 this.datum,
                 this.popis});

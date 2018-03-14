@@ -6,18 +6,27 @@
     <string name="podmienky_prijatia">Podmienky prijatia</string>
     <string name="studentsky_zivot">Študentský život</string>
     <string name="orientacia">Orientácia</string>
+    <string name="udalosti">Udalosti</string>
 
     <!-- menu moznosti studia -->
-    <string name="matematika">Matematika</string>
-    <string name="fyzika">Fyzika</string>
-    <string name="informatika">Informatika</string>
-    <string name="chemia">Chémia</string>
-    <string name="ekologia">Ekológia a enviromentalistika</string>
-    <string name="gemologia">Gemólogia</string>
-    <string name="ekonomika">Ekonomika</string>
+    <string name="ekologia_enviromentalistika">Aplikovaná ekológia a environmentalistika</string>
+    <string name="informatika">Aplikovaná informatika</string>
     <string name="biologia">Biológia</string>
-    <string name="geografia">Geografia</string>
-    <string name="ucitelstvo">Učiteľstvo</string>
+    <string name="environmentalistika">Environmentalistika</string>
+    <string name="fyzika">Fyzika</string>
+    <string name="geografia">Geografia v regionálnom rozvoji</string>
+    <string name="matematika">Matematicko-štatistické a informačné metódy v ekonómii a finančníctve</string>
+    <string name="gemologia">Technická mineralógia - gemológia</string>
+    <string name="ucitelstvo_biologia">Učiteľstvo biológie v kombinácii</string>
+    <string name="ucitelstvo_ekologia">Učiteľstvo ekológie v kombinácii</string>
+    <string name="ucitelstvo_fyzika">Učiteľstvo fyziky v kombinácii</string>
+    <string name="ucitelstvo_geografia">Učiteľstvo geografie v kombinácii</string>
+    <string name="ucitelstvo_chemia">Učiteľstvo chémie v kombinácii</string>
+    <string name="ucitelstvo_informatika">Učiteľstvo informatiky v kombinácii</string>
+    <string name="ucitelstvo_matematika">Učiteľstvo matematiky v kombinácii</string>
+    <string name="ucitelstvo_ekonomika">Učiteľstvo odborných ekonomických predmetov v kombinácii</string>
+
+    <string name="viac_info">Viac informácií o študijnom programe</string>
 
     <!-- menu studentsky zivot -->
     <string name="mesto">Mesto vášho štúdia</string>

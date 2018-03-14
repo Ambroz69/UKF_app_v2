@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import com.example.dominik.ukf_app.db_connect.Api;
 import com.example.dominik.ukf_app.db_connect.CalendarEvent;
 import com.example.dominik.ukf_app.db_connect.Item;
 import com.example.dominik.ukf_app.db_connect.RequestHandler;
+import com.example.dominik.ukf_app.db_connect.StudijnyProgram;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,21 +44,26 @@ public class MainActivity extends AppCompatActivity {
     ListView listView, podmienkyPrijatiaView, studentskyZivotView;
     List<Item> itemList, podmienkyPrijatiaList, studentskyZivotList;
     List<CalendarEvent> udalostiList;
-    List<String> dataMoznostiStudia, dataPodmienkyPrijatia, dataStudentskyZivot, dataUdalosti;
+    List<StudijnyProgram> studijnyProgramList;
+    List<String> dataMoznostiStudia, dataPodmienkyPrijatia, dataStudentskyZivot, dataStudijnyProgram;
     Button buttonAddUpdate;
     boolean isUpdating = false;
 
     GridLayout mainGrid;
+    private boolean isReadingDB = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
         itemList = new ArrayList<>();
         podmienkyPrijatiaList = new ArrayList<>();
         studentskyZivotList = new ArrayList<>();
         udalostiList = new ArrayList<>();
+        studijnyProgramList = new ArrayList<>();
 
         editTextId = (EditText) findViewById(R.id.editTextId);
         editTextNazov = (EditText) findViewById(R.id.editTextNazov);
@@ -77,17 +84,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        readItems();
 
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
+
+        readItems();
         setSingleEvent(mainGrid);
+        if (!isReadingDB)
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
 
     }
 
     public void calendarButton(View view) {
         Intent intent = new Intent(MainActivity.this,ActivityCalendar.class);
         intent.putParcelableArrayListExtra("udalosti", (ArrayList<? extends Parcelable>) udalostiList);
-        getApplicationContext().startActivity(intent);
+        startActivity(intent);
     }
 
     /* test */
@@ -98,14 +109,8 @@ public class MainActivity extends AppCompatActivity {
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dataMoznostiStudia = new ArrayList<>(itemList.size());
-                for (Object object : itemList) {
-                    dataMoznostiStudia.add(object != null ? object.toString() : null);
-                }
-                Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudia.class);
-                for (int i = 0; i < dataMoznostiStudia.size(); i++) {
-                    intent.putExtra("tab"+i, dataMoznostiStudia.get(i).toString());
-                }
+                Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudiaMenu.class);
+                intent.putParcelableArrayListExtra("studijne_programy", (ArrayList<? extends Parcelable>) studijnyProgramList);
                 startActivity(intent);
             }
         });
@@ -136,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(MainActivity.this,ActivityStudentskyZivot.class);
                 for (int i = 0; i < dataStudentskyZivot.size(); i++) {
-                    intent.putExtra("tab"+i, dataStudentskyZivot.get(i).toString());
+                    intent.putExtra("detailInfo"+i, dataStudentskyZivot.get(i).toString());
                 }
                 startActivity(intent);
             }
@@ -154,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void readItems() {
+        isReadingDB = true;
+
         PerformNetworkRequest request1 = new PerformNetworkRequest(Api.URL_READ_ITEMS, null, CODE_GET_REQUEST);
         request1.execute();
 
@@ -166,7 +173,10 @@ public class MainActivity extends AppCompatActivity {
         PerformNetworkRequest request4 = new PerformNetworkRequest(Api.URL_READ_UDALOSTI, null, CODE_GET_REQUEST);
         request4.execute();
 
+        PerformNetworkRequest request5 = new PerformNetworkRequest(Api.URL_READ_STUDIJNY_PROGRAM, null, CODE_GET_REQUEST);
+        request5.execute();
 
+        isReadingDB = false;
     }
 
     /* CRUD v mobile*/
@@ -289,10 +299,25 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject obj = items.getJSONObject(i);
 
                     udalostiList.add(new CalendarEvent (
-                            obj.getString("id"),
+                            obj.getInt("id"),
                             obj.getString("nazov"),
                             obj.getString("datum"),
                             obj.getString("popis")
+                    ));
+                }
+            break;
+
+            case "studijny_program":
+                studijnyProgramList.clear();
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject obj = items.getJSONObject(i);
+
+                   studijnyProgramList.add(new StudijnyProgram (
+                            obj.getInt("id"),
+                            obj.getString("nazov"),
+                            obj.getString("typ"),
+                            obj.getString("obsah"),
+                            obj.getString("detail")
                     ));
                 }
             break;
