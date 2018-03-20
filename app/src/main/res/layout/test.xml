@@ -53,7 +53,6 @@
             android:layout_weight="1">
 
             <android.support.v7.widget.CardView
-                android:onClick="moznostiStudiaButton"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_marginHorizontal="@dimen/bubi"
@@ -83,7 +82,6 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:onClick="podmienkyPrijatiaButton"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_marginHorizontal="@dimen/bubi"
@@ -121,7 +119,6 @@
             android:layout_weight="1">
 
             <android.support.v7.widget.CardView
-                android:onClick="studentstkyZivotButton"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_marginHorizontal="@dimen/bubi"
@@ -151,7 +148,6 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:onClick="orientaciaButton"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_marginHorizontal="@dimen/bubi"

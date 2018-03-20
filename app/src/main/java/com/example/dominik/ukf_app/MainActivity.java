@@ -40,12 +40,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
 
-    EditText editTextId, editTextNazov, editTextObsah;
-    ListView listView, podmienkyPrijatiaView, studentskyZivotView;
     List<Item> itemList, podmienkyPrijatiaList, studentskyZivotList;
     List<CalendarEvent> udalostiList;
     List<StudijnyProgram> studijnyProgramList;
-    List<String> dataMoznostiStudia, dataPodmienkyPrijatia, dataStudentskyZivot, dataStudijnyProgram;
+    List<String> dataPodmienkyPrijatia, dataStudentskyZivot;
 
     GridLayout mainGrid;
     private boolean isReadingDB = true;
@@ -63,14 +61,10 @@ public class MainActivity extends AppCompatActivity {
         udalostiList = new ArrayList<>();
         studijnyProgramList = new ArrayList<>();
 
-        listView = (ListView) findViewById(R.id.listViewItems);
-        podmienkyPrijatiaView = (ListView) findViewById(R.id.listViewPodmienkyPrijatia);
-        studentskyZivotView = (ListView) findViewById(R.id.listViewStudentskyZivot);
-
-        mainGrid = (GridLayout) findViewById(R.id.mainGrid);
+        //mainGrid = (GridLayout) findViewById(R.id.mainGrid);
 
         readItems();
-        setSingleEvent(mainGrid);
+        //setSingleEvent(mainGrid);
         if (!isReadingDB)
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
@@ -82,7 +76,43 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /* test */
+    public void moznostiStudiaButton(View view) {
+        Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudiaMenu.class);
+        intent.putParcelableArrayListExtra("studijne_programy", (ArrayList<? extends Parcelable>) studijnyProgramList);
+        startActivity(intent);
+    }
+
+    public void podmienkyPrijatiaButton(View view) {
+        dataPodmienkyPrijatia = new ArrayList<>(podmienkyPrijatiaList.size());
+        for (Object object : podmienkyPrijatiaList) {
+            dataPodmienkyPrijatia.add(object != null ? object.toString() : null);
+        }
+        Intent intent = new Intent(MainActivity.this,ActivityPodmienkyPrijatia.class);
+        for (int i = 0; i < dataPodmienkyPrijatia.size(); i++) {
+            intent.putExtra("info", dataPodmienkyPrijatia.get(i).toString());
+        }
+        startActivity(intent);
+    }
+
+    public void studentstkyZivotButton(View view) {
+        dataStudentskyZivot = new ArrayList<>(studentskyZivotList.size());
+        for (Object object : studentskyZivotList) {
+            dataStudentskyZivot.add(object != null ? object.toString() : null);
+        }
+        Intent intent = new Intent(MainActivity.this,ActivityStudentskyZivot.class);
+        for (int i = 0; i < dataStudentskyZivot.size(); i++) {
+            intent.putExtra("detailInfo"+i, dataStudentskyZivot.get(i).toString());
+        }
+        startActivity(intent);
+    }
+
+    public void orientaciaButton(View view) {
+        Intent intent = new Intent(MainActivity.this,ActivityOrientacia.class);
+        intent.putExtra("info","Orientacia na fakulte FPV");
+        startActivity(intent);
+    }
+
+/*
     private void setSingleEvent(GridLayout mainGrid) {
 
         //karta moznosti studia
@@ -138,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+*/
     private void readItems() {
         isReadingDB = true;
 
@@ -161,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshItemList(JSONArray items, String message) throws JSONException {
-        ItemAdapter adapter;
 
         switch(message) {
             case "moznosti_studia":
@@ -175,8 +204,6 @@ public class MainActivity extends AppCompatActivity {
                             obj.getString("obsah")
                     ));
                 }
-                adapter = new ItemAdapter(itemList);
-                listView.setAdapter(adapter);
             break;
 
             case "podmienky_prijatia":
@@ -190,8 +217,6 @@ public class MainActivity extends AppCompatActivity {
                             obj.getString("obsah")
                     ));
                 }
-                adapter = new ItemAdapter(podmienkyPrijatiaList);
-                podmienkyPrijatiaView.setAdapter(adapter);
             break;
 
             case "studentsky_zivot":
@@ -205,8 +230,6 @@ public class MainActivity extends AppCompatActivity {
                             obj.getString("obsah")
                     ));
                 }
-                adapter = new ItemAdapter(studentskyZivotList);
-                studentskyZivotView.setAdapter(adapter);
             break;
 
             case "udalosti":
@@ -242,7 +265,6 @@ public class MainActivity extends AppCompatActivity {
                 throw new IllegalArgumentException("Invalid argument: " + message);
         }
     }
-
 
     private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
         String url;
@@ -288,29 +310,4 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-
-    class ItemAdapter extends ArrayAdapter<Item> {
-        List<Item> itemList;
-
-        public ItemAdapter(List<Item> itemList) {
-            super(MainActivity.this, R.layout.layout_item_list, itemList);
-            this.itemList = itemList;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = getLayoutInflater();
-            View listViewItem = inflater.inflate(R.layout.layout_item_list, null, true);
-
-            TextView textViewObsah = listViewItem.findViewById(R.id.textViewObsah);
-            TextView textViewName = listViewItem.findViewById(R.id.textViewName);
-
-            final Item item = itemList.get(position);
-            textViewName.setText(item.getNazov());
-            textViewObsah.setText(item.getObsah());
-
-            return listViewItem;
-        }
-    }
-
 }

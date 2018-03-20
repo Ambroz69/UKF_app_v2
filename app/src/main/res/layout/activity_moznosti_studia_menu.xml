@@ -3,16 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:visibility="visible"
+    android:background="@color/ukf_gray"
     tools:context="com.example.dominik.ukf_app.ActivityMoznostiStudiaMenu">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/ukf_gray"
         android:orientation="vertical">
+        
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="@color/ukf_gray"/>
+
+        <com.miguelcatalan.materialsearchview.MaterialSearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:searchBackground="@color/ukf_green"
+            app:searchSuggestionBackground="@color/ukf_green"></com.miguelcatalan.materialsearchview.MaterialSearchView>
 
         <RelativeLayout
             android:layout_width="match_parent"
