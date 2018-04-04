@@ -25,16 +25,11 @@
             android:layout_margin="16dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/udalosti"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"/>
 
         </LinearLayout>
 

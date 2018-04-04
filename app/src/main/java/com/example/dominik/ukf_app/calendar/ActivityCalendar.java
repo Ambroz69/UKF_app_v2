@@ -79,11 +79,11 @@ public class ActivityCalendar extends AppCompatActivity {
                 for (int i = 0; i < udalostiList.size(); i++) {
                     if (udalostiList.get(i).getDatum().equals(datum)) {
                         eventTitle = "<strong>Názov:</strong> " + udalostiList.get(i).getNazov();
-                        eventDate = "<strong>Dátum</strong>: " + udalostiList.get(i).getDatum();
+                        eventDate = "<strong>Dátum</strong>: " + convertDate(udalostiList.get(i).getDatum());
                         eventDescription = "<strong>Popis:</strong> " + udalostiList.get(i).getPopis();
                         break;
                     } else {
-                       eventDate ="<strong>Dátum:</strong> " + datum;
+                       eventDate ="<strong>Dátum:</strong> " + convertDate(datum);
                        eventTitle = "Žiadna udalosť";
                        eventDescription = "";
                     }
@@ -105,5 +105,56 @@ public class ActivityCalendar extends AppCompatActivity {
         Intent intent = new Intent(ActivityCalendar.this,ActivityEventList.class);
         intent.putParcelableArrayListExtra("udalosti", (ArrayList<? extends Parcelable>) udalostiList);
         startActivity(intent);
+    }
+
+    public String convertDate(String SQL_date) {
+        String convertedDate, year, month, day;
+        year = SQL_date.substring(0,4);
+        month = SQL_date.substring(5,7);
+        switch (month) {
+            case "01":
+                month = "január";
+                break;
+            case "02":
+                month = "február";
+                break;
+            case "03":
+                month = "marec";
+                break;
+            case "04":
+                month = "apríl";
+                break;
+            case "05":
+                month = "máj";
+                break;
+            case "06":
+                month = "jún";
+                break;
+            case "07":
+                month = "júl";
+                break;
+            case "08":
+                month = "august";
+                break;
+            case "09":
+                month = "september";
+                break;
+            case "10":
+                month = "október";
+                break;
+            case "11":
+                month = "november";
+                break;
+            case "12":
+                month = "december";
+                break;
+        }
+        if (SQL_date.substring(8,9).equals("0"))
+            day = SQL_date.substring(9);
+        else
+            day = SQL_date.substring(8);
+
+        convertedDate = day + ". " + month + " " + year;
+        return convertedDate;
     }
 }

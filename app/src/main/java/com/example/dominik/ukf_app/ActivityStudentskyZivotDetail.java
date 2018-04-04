@@ -3,6 +3,7 @@ package com.example.dominik.ukf_app;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 /**
@@ -17,11 +18,11 @@ public class ActivityStudentskyZivotDetail extends AppCompatActivity{
         setContentView(R.layout.activity_studentsky_zivot_detail);
 
 
-        TextView moznostiStudiaDetail = (TextView)findViewById(R.id.studentskyZivotDetail);
+        WebView moznostiStudiaDetail = (WebView)findViewById(R.id.studentskyZivotDetail);
         if(getIntent() != null)
         {
             String info = getIntent().getStringExtra("info");
-            moznostiStudiaDetail.setText(Html.fromHtml(info));
+            moznostiStudiaDetail.loadData(info,"text/html; charset=utf-8","utf-8");
         }
 
     }

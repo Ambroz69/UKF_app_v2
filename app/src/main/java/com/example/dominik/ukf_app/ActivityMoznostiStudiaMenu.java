@@ -37,7 +37,7 @@ public class ActivityMoznostiStudiaMenu extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Hľadať študijný program");
+        getSupportActionBar().setTitle("");
         toolbar.setTitleTextColor(Color.BLACK);
 
         setSingleEvent(moznostiStudiaGrid);

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -24,12 +24,10 @@
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:searchBackground="@color/ukf_green"
-            app:searchSuggestionBackground="@color/ukf_green"></com.miguelcatalan.materialsearchview.MaterialSearchView>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="15dp"></RelativeLayout>
+            android:textColorHint="@android:color/darker_gray"
+            android:hint="Hľadať študijný program"
+            app:searchBackground="@color/ukf_gray"
+            app:searchSuggestionBackground="@color/ukf_gray"></com.miguelcatalan.materialsearchview.MaterialSearchView>
 
         <GridLayout
             android:id="@+id/moznostiStudiaGrid"
@@ -48,6 +46,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -63,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ekologia_enviromentalistika"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -78,6 +77,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -93,7 +93,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/informatika"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -109,6 +109,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -124,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/biologia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -139,6 +140,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -154,7 +156,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/environmentalistika"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -169,6 +171,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -184,7 +187,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/fyzika"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -199,6 +202,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -214,7 +218,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/geografia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -229,6 +233,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -244,7 +249,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/matematika"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -259,6 +264,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -274,7 +280,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/gemologia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -289,6 +295,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -304,7 +311,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_biologia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -319,6 +326,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -334,7 +342,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_ekologia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -349,6 +357,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -364,7 +373,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_fyzika"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -379,6 +388,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -394,7 +404,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_geografia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -409,6 +419,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -424,7 +435,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_chemia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -439,6 +450,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -454,7 +466,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_informatika"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -469,6 +481,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -484,7 +497,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_matematika"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 
@@ -499,6 +512,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -514,7 +528,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_ekonomika"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
 

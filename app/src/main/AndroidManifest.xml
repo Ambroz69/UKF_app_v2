@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityOrientacia"></activity>
+        <activity android:name=".ActivityOrientaciaBudova"></activity>
         <activity android:name=".ActivityPodmienkyPrijatia"></activity>
         <activity android:name=".ActivityStudentskyZivot"></activity>
         <activity android:name=".ActivityStudentskyZivotDetail"></activity>
@@ -28,6 +29,7 @@
         <activity android:name=".ActivityMoznostiStudiaStudijnyProgram"></activity>
         <activity android:name=".calendar.ActivityCalendar"></activity>
         <activity android:name=".calendar.ActivityEventList"></activity>
+        <activity android:name=".calendar.ActivityEventDetail"></activity>
     </application>
 
 </manifest>

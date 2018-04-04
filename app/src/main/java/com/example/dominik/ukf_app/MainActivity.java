@@ -2,6 +2,9 @@ package com.example.dominik.ukf_app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -17,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,11 +30,13 @@ import com.example.dominik.ukf_app.db_connect.CalendarEvent;
 import com.example.dominik.ukf_app.db_connect.Item;
 import com.example.dominik.ukf_app.db_connect.RequestHandler;
 import com.example.dominik.ukf_app.db_connect.StudijnyProgram;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,14 +45,16 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
+    private boolean isReadingDB = true;
 
     List<Item> itemList, podmienkyPrijatiaList, studentskyZivotList;
     List<CalendarEvent> udalostiList;
     List<StudijnyProgram> studijnyProgramList;
-    List<String> dataPodmienkyPrijatia, dataStudentskyZivot;
+    List<String> dataPodmienkyPrijatia, dataStudentskyZivot, obrazkyNazovList, obrazkyUrlList;
+    ImageView imageView;
+    Drawable[] images;
 
-    GridLayout mainGrid;
-    private boolean isReadingDB = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,17 +63,19 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
+        imageView = findViewById(R.id.imageView);
         itemList = new ArrayList<>();
         podmienkyPrijatiaList = new ArrayList<>();
         studentskyZivotList = new ArrayList<>();
         udalostiList = new ArrayList<>();
         studijnyProgramList = new ArrayList<>();
+        obrazkyNazovList = new ArrayList<>();
+        obrazkyUrlList = new ArrayList<>();
 
-        //mainGrid = (GridLayout) findViewById(R.id.mainGrid);
 
         readItems();
-        //setSingleEvent(mainGrid);
-        if (!isReadingDB)
+
+        //if (!isReadingDB)
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
     }
@@ -108,67 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void orientaciaButton(View view) {
         Intent intent = new Intent(MainActivity.this,ActivityOrientacia.class);
-        intent.putExtra("info","Orientacia na fakulte FPV");
+        intent.putExtra("mesto", "Potrebujem sa dostať do budovy UKF:");
+        intent.putExtra("budova", "Som v hlavnej budove UKF a hľadám miestnosť:");
         startActivity(intent);
     }
 
-/*
-    private void setSingleEvent(GridLayout mainGrid) {
-
-        //karta moznosti studia
-        CardView cardView1 = (CardView) mainGrid.getChildAt(0);
-        cardView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudiaMenu.class);
-                intent.putParcelableArrayListExtra("studijne_programy", (ArrayList<? extends Parcelable>) studijnyProgramList);
-                startActivity(intent);
-            }
-        });
-        //karta podmienky prijatia
-        CardView cardView2 = (CardView) mainGrid.getChildAt(1);
-        cardView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataPodmienkyPrijatia = new ArrayList<>(podmienkyPrijatiaList.size());
-                for (Object object : podmienkyPrijatiaList) {
-                    dataPodmienkyPrijatia.add(object != null ? object.toString() : null);
-                }
-                Intent intent = new Intent(MainActivity.this,ActivityPodmienkyPrijatia.class);
-                for (int i = 0; i < dataPodmienkyPrijatia.size(); i++) {
-                    intent.putExtra("info", dataPodmienkyPrijatia.get(i).toString());
-                }
-                startActivity(intent);
-            }
-        });
-        //karta studentsky zivot
-        CardView cardView3 = (CardView) mainGrid.getChildAt(2);
-        cardView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataStudentskyZivot = new ArrayList<>(studentskyZivotList.size());
-                for (Object object : studentskyZivotList) {
-                    dataStudentskyZivot.add(object != null ? object.toString() : null);
-                }
-                Intent intent = new Intent(MainActivity.this,ActivityStudentskyZivot.class);
-                for (int i = 0; i < dataStudentskyZivot.size(); i++) {
-                    intent.putExtra("detailInfo"+i, dataStudentskyZivot.get(i).toString());
-                }
-                startActivity(intent);
-            }
-        });
-        //karta orientacia
-        CardView cardView4 = (CardView) mainGrid.getChildAt(3);
-        cardView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ActivityOrientacia.class);
-                intent.putExtra("info","Orientacia na fakulte FPV");
-                startActivity(intent);
-            }
-        });
-    }
-*/
     private void readItems() {
         isReadingDB = true;
 
@@ -186,6 +140,9 @@ public class MainActivity extends AppCompatActivity {
 
         PerformNetworkRequest request5 = new PerformNetworkRequest(Api.URL_READ_STUDIJNY_PROGRAM, null, CODE_GET_REQUEST);
         request5.execute();
+
+        PerformNetworkRequest request6 = new PerformNetworkRequest(Api.URL_READ_IMAGES, null, CODE_GET_REQUEST);
+        request6.execute();
 
         isReadingDB = false;
     }
@@ -258,6 +215,17 @@ public class MainActivity extends AppCompatActivity {
                             obj.getString("obsah"),
                             obj.getString("detail")
                     ));
+                }
+            break;
+
+            case "obrazky":
+                obrazkyNazovList.clear();
+                obrazkyUrlList.clear();
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject obj = items.getJSONObject(i);
+
+                    obrazkyNazovList.add(obj.getString("nazov"));
+                    obrazkyUrlList.add(obj.getString("url"));
                 }
             break;
 

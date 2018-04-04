@@ -7,6 +7,7 @@
     android:background="@color/ukf_gray"
     android:orientation="vertical">
 
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +16,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:onClick="calendarButton"
+        android:backgroundTint="@color/ukf_green"
         app:cardCornerRadius="8dp"
         app:cardElevation="@dimen/card_elevation">
 
@@ -23,17 +25,22 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal|center_vertical"
             android:layout_margin="16dp"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/ic_kalendar_udalosti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:text="@string/udalosti"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -59,6 +66,7 @@
                 android:layout_marginHorizontal="@dimen/bubi"
                 android:layout_marginVertical="@dimen/bubi"
                 android:layout_weight="1"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -69,13 +77,18 @@
                     android:layout_margin="16dp"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_moznosti_studia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/moznosti_studia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -89,6 +102,7 @@
                 android:layout_marginHorizontal="@dimen/bubi"
                 android:layout_marginVertical="@dimen/bubi"
                 android:layout_weight="1"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -99,13 +113,19 @@
                     android:layout_margin="16dp"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_podmienky_prijatia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/podmienky_prijatia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -127,6 +147,7 @@
                 android:layout_marginHorizontal="@dimen/bubi"
                 android:layout_marginVertical="@dimen/bubi"
                 android:layout_weight="1"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -137,13 +158,19 @@
                     android:layout_margin="16dp"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_studentsky_zivot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/studentsky_zivot"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -157,6 +184,7 @@
                 android:layout_marginHorizontal="@dimen/bubi"
                 android:layout_marginVertical="@dimen/bubi"
                 android:layout_weight="1"
+                android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -167,13 +195,19 @@
                     android:layout_margin="16dp"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_orientacia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/orientacia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -187,6 +221,16 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:orientation="vertical"></RelativeLayout>
+        android:orientation="vertical">
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
 
 </LinearLayout>
+
