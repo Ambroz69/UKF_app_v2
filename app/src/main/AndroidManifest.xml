@@ -15,21 +15,53 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityOrientacia"></activity>
-        <activity android:name=".ActivityOrientaciaBudova"></activity>
-        <activity android:name=".ActivityPodmienkyPrijatia"></activity>
-        <activity android:name=".ActivityStudentskyZivot"></activity>
-        <activity android:name=".ActivityStudentskyZivotDetail"></activity>
-        <activity android:name=".ActivityMoznostiStudiaMenu"></activity>
-        <activity android:name=".ActivityMoznostiStudiaDetail"></activity>
-        <activity android:name=".ActivityMoznostiStudiaStudijnyProgram"></activity>
-        <activity android:name=".calendar.ActivityCalendar"></activity>
-        <activity android:name=".calendar.ActivityEventList"></activity>
-        <activity android:name=".calendar.ActivityEventDetail"></activity>
+        <activity
+            android:name=".ActivityOrientacia"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ActivityOrientaciaBudova"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ActivityPodmienkyPrijatia"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ActivityStudentskyZivot"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ActivityStudentskyZivotDetail"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ActivityMoznostiStudiaMenu"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ActivityMoznostiStudiaDetail"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ActivityMoznostiStudiaStudijnyProgram"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".calendar.ActivityCalendar"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".calendar.ActivityEventList"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".calendar.ActivityEventDetail"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

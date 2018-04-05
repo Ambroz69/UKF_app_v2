@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.dominik.ukf_app.ActivityStudentskyZivot"
-    android:visibility="visible">
-
-
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="@drawable/bg_fpv_3"
-        android:weightSum="100"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <RelativeLayout
-            android:layout_weight="15"
-            android:layout_width="match_parent"
-            android:layout_height="0dp">
-        </RelativeLayout>
+    android:background="@color/ukf_gray">
 
         <GridLayout
             android:id="@+id/studentskyZivotGrid"
             android:columnCount="2"
-            android:rowCount="2"
+            android:rowCount="6"
+            android:layout_marginTop="16dp"
             android:alignmentMode="alignMargins"
             android:columnOrderPreserved="false"
-            android:layout_weight="85"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:padding="5dp"
             >
 
@@ -41,24 +25,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_mesto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/mesto"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -74,26 +65,33 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_doprava"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="105dp"
+                        android:layout_height="wrap_content"
                         android:text="@string/doprava"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold" />
 
@@ -108,24 +106,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_internet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/internet"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -141,24 +146,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_ubytovanie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/ubytovanie"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -174,24 +186,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_stravovanie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/stravovanie"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -207,24 +226,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_kultura"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/kultura_sport"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -240,24 +266,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_basketbal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/basketbal"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -273,24 +306,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_ponitran"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/fs_ponitran"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -306,24 +346,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_kluby"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/kluby_zdruzenia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -339,24 +386,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_upc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/upc"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -372,24 +426,31 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
+                android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
+                android:backgroundTint="@color/ukf_green"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="6dp"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_erasmus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:text="@string/erasmus"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -402,5 +463,3 @@
         </GridLayout>
 
     </LinearLayout>
-
-</ScrollView>

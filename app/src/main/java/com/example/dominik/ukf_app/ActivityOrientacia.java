@@ -47,7 +47,8 @@ public class ActivityOrientacia extends AppCompatActivity {
 
     public void detailBudovyButton(View view) {
         Intent intent = new Intent(ActivityOrientacia.this,ActivityOrientaciaBudova.class);
-        intent.putExtra("info", "Tu bude mapa budovy a vysvetlenie");
+        intent.putExtra("info1", "Na nasledujúcom obrázku je možné nájsť vysvetlenie skratiek miestností na UKF:");
+        intent.putExtra("info2", "Označenia jednotlivých blokov v hlavnej budove FPV UKF:");
         startActivity(intent);
     }
 

@@ -8,5 +8,6 @@
     <dimen name="bubi">10dp</dimen>
     <dimen name="toolbar_height">35dp</dimen>
     <dimen name="text_size_menu_studentsky_zivot">14sp</dimen>
+    <dimen name="margin_studentsky_zivot_menu">8dp</dimen>
     <dimen name="text_size_menu_moznosti_studia">14sp</dimen>
 </resources>
