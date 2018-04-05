@@ -23,6 +23,7 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dominik.ukf_app.calendar.ActivityCalendar;
 import com.example.dominik.ukf_app.db_connect.Api;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
-    private boolean isReadingDB = true;
+    private boolean locked;
 
     List<Item> itemList, podmienkyPrijatiaList, studentskyZivotList;
     List<CalendarEvent> udalostiList;
@@ -60,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        locked = true;
+        Toast.makeText(getApplicationContext(),"Načitávajú sa údaje, prosím počkajte...", Toast.LENGTH_SHORT).show();
 
         imageView = findViewById(R.id.imageView);
         itemList = new ArrayList<>();
@@ -73,57 +75,64 @@ public class MainActivity extends AppCompatActivity {
 
 
         readItems();
-
-        //if (!isReadingDB)
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
+        locked = false;
+        Toast.makeText(getApplicationContext(),"Načítané.", Toast.LENGTH_SHORT).show();
     }
 
     public void calendarButton(View view) {
-        Intent intent = new Intent(MainActivity.this,ActivityCalendar.class);
-        intent.putParcelableArrayListExtra("udalosti", (ArrayList<? extends Parcelable>) udalostiList);
-        startActivity(intent);
+        if (!locked) {
+            Intent intent = new Intent(MainActivity.this, ActivityCalendar.class);
+            intent.putParcelableArrayListExtra("udalosti", (ArrayList<? extends Parcelable>) udalostiList);
+            startActivity(intent);
+        }
     }
 
     public void moznostiStudiaButton(View view) {
-        Intent intent = new Intent(MainActivity.this,ActivityMoznostiStudiaMenu.class);
-        intent.putParcelableArrayListExtra("studijne_programy", (ArrayList<? extends Parcelable>) studijnyProgramList);
-        startActivity(intent);
+        if (!locked) {
+            Intent intent = new Intent(MainActivity.this, ActivityMoznostiStudiaMenu.class);
+            intent.putParcelableArrayListExtra("studijne_programy", (ArrayList<? extends Parcelable>) studijnyProgramList);
+            startActivity(intent);
+        }
     }
 
     public void podmienkyPrijatiaButton(View view) {
-        dataPodmienkyPrijatia = new ArrayList<>(podmienkyPrijatiaList.size());
-        for (Object object : podmienkyPrijatiaList) {
-            dataPodmienkyPrijatia.add(object != null ? object.toString() : null);
+        if (!locked) {
+            dataPodmienkyPrijatia = new ArrayList<>(podmienkyPrijatiaList.size());
+            for (Object object : podmienkyPrijatiaList) {
+                dataPodmienkyPrijatia.add(object != null ? object.toString() : null);
+            }
+            Intent intent = new Intent(MainActivity.this, ActivityPodmienkyPrijatia.class);
+            for (int i = 0; i < dataPodmienkyPrijatia.size(); i++) {
+                intent.putExtra("info", dataPodmienkyPrijatia.get(i).toString());
+            }
+            startActivity(intent);
         }
-        Intent intent = new Intent(MainActivity.this,ActivityPodmienkyPrijatia.class);
-        for (int i = 0; i < dataPodmienkyPrijatia.size(); i++) {
-            intent.putExtra("info", dataPodmienkyPrijatia.get(i).toString());
-        }
-        startActivity(intent);
     }
 
     public void studentstkyZivotButton(View view) {
-        dataStudentskyZivot = new ArrayList<>(studentskyZivotList.size());
-        for (Object object : studentskyZivotList) {
-            dataStudentskyZivot.add(object != null ? object.toString() : null);
+        if (!locked) {
+            dataStudentskyZivot = new ArrayList<>(studentskyZivotList.size());
+            for (Object object : studentskyZivotList) {
+                dataStudentskyZivot.add(object != null ? object.toString() : null);
+            }
+            Intent intent = new Intent(MainActivity.this, ActivityStudentskyZivot.class);
+            for (int i = 0; i < dataStudentskyZivot.size(); i++) {
+                intent.putExtra("detailInfo" + i, dataStudentskyZivot.get(i).toString());
+            }
+            startActivity(intent);
         }
-        Intent intent = new Intent(MainActivity.this,ActivityStudentskyZivot.class);
-        for (int i = 0; i < dataStudentskyZivot.size(); i++) {
-            intent.putExtra("detailInfo"+i, dataStudentskyZivot.get(i).toString());
-        }
-        startActivity(intent);
     }
 
     public void orientaciaButton(View view) {
-        Intent intent = new Intent(MainActivity.this,ActivityOrientacia.class);
-        intent.putExtra("mesto", "Potrebujem sa dostať do budovy UKF:");
-        intent.putExtra("budova", "Som v hlavnej budove UKF a hľadám miestnosť:");
-        startActivity(intent);
+        if (!locked) {
+            Intent intent = new Intent(MainActivity.this, ActivityOrientacia.class);
+            intent.putExtra("mesto", "Potrebujem sa dostať do budovy UKF:");
+            intent.putExtra("budova", "Som v hlavnej budove UKF a hľadám miestnosť:");
+            startActivity(intent);
+        }
     }
 
     private void readItems() {
-        isReadingDB = true;
 
         PerformNetworkRequest request1 = new PerformNetworkRequest(Api.URL_READ_ITEMS, null, CODE_GET_REQUEST);
         request1.execute();
@@ -142,8 +151,6 @@ public class MainActivity extends AppCompatActivity {
 
         PerformNetworkRequest request6 = new PerformNetworkRequest(Api.URL_READ_IMAGES, null, CODE_GET_REQUEST);
         request6.execute();
-
-        isReadingDB = false;
     }
 
     private void refreshItemList(JSONArray items, String message) throws JSONException {
