@@ -1,28 +1,17 @@
 package com.example.dominik.ukf_app;
 
-import android.content.DialogInterface;
+
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dominik.ukf_app.calendar.ActivityCalendar;
@@ -31,14 +20,16 @@ import com.example.dominik.ukf_app.db_connect.CalendarEvent;
 import com.example.dominik.ukf_app.db_connect.Item;
 import com.example.dominik.ukf_app.db_connect.RequestHandler;
 import com.example.dominik.ukf_app.db_connect.StudijnyProgram;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     List<StudijnyProgram> studijnyProgramList;
     List<String> dataPodmienkyPrijatia, dataStudentskyZivot, obrazkyNazovList, obrazkyUrlList;
     ImageView imageView;
-    Drawable[] images;
 
 
 
@@ -73,10 +63,50 @@ public class MainActivity extends AppCompatActivity {
         obrazkyNazovList = new ArrayList<>();
         obrazkyUrlList = new ArrayList<>();
 
-
+        //load textov
         readItems();
-        locked = false;
-        Toast.makeText(getApplicationContext(),"Načítané.", Toast.LENGTH_SHORT).show();
+    }
+
+    public void saveImage(Context context, Bitmap b, String imageName) {
+        FileOutputStream foStream;
+        try {
+            foStream = context.openFileOutput(imageName, Context.MODE_PRIVATE);
+            b.compress(Bitmap.CompressFormat.JPEG, 100, foStream);
+            foStream.close();
+        } catch (Exception e) {
+            Log.d("saveImage", "Exception 2, Something went wrong!");
+            e.printStackTrace();
+        }
+    }
+
+    private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
+        private String TAG = "DownloadImage";
+        String imageName;
+
+        public DownloadImage(String imageName) {
+            this.imageName = imageName;
+        }
+        private Bitmap downloadImageBitmap(String sUrl) {
+            Bitmap bitmap = null;
+            try {
+                InputStream inputStream = new URL(sUrl).openStream();   // Download Image from URL
+                bitmap = BitmapFactory.decodeStream(inputStream);       // Decode Bitmap
+                inputStream.close();
+            } catch (Exception e) {
+                Log.d(TAG, "Exception 1, Something went wrong!");
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            return downloadImageBitmap(params[0]);
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            saveImage(getApplicationContext(), result, imageName);
+        }
     }
 
     public void calendarButton(View view) {
@@ -131,7 +161,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
+    private void readPictures() {
+        for (int i = 0; i < obrazkyUrlList.size(); i++) {
+            new DownloadImage(obrazkyNazovList.get(i)).execute("https://" + obrazkyUrlList.get(i));
+        }
+    }
     private void readItems() {
 
         PerformNetworkRequest request1 = new PerformNetworkRequest(Api.URL_READ_ITEMS, null, CODE_GET_REQUEST);
@@ -151,6 +185,9 @@ public class MainActivity extends AppCompatActivity {
 
         PerformNetworkRequest request6 = new PerformNetworkRequest(Api.URL_READ_IMAGES, null, CODE_GET_REQUEST);
         request6.execute();
+
+        Toast.makeText(getApplicationContext(),"Načítané.", Toast.LENGTH_SHORT).show();
+        locked = false;
     }
 
     private void refreshItemList(JSONArray items, String message) throws JSONException {
@@ -264,6 +301,13 @@ public class MainActivity extends AppCompatActivity {
                 if (!object.getBoolean("error")) {
                     //Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
                     refreshItemList(object.getJSONArray("items"), object.getString("message"));
+                    readPictures();
+
+                    //debug
+                    if (!obrazkyUrlList.isEmpty()) {
+                        System.out.println(Arrays.deepToString(getFilesDir().listFiles()));
+                    }
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

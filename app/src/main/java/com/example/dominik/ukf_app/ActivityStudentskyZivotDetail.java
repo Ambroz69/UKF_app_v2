@@ -22,7 +22,7 @@ public class ActivityStudentskyZivotDetail extends AppCompatActivity{
         if(getIntent() != null)
         {
             String info = getIntent().getStringExtra("info");
-            moznostiStudiaDetail.loadData(info,"text/html; charset=utf-8","utf-8");
+            moznostiStudiaDetail.loadDataWithBaseURL("", info, "text/html","utf-8", "");
         }
 
     }
