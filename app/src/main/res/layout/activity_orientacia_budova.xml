@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:visibility="visible"
     android:background="@color/ukf_gray"
-    tools:context="com.example.dominik.ukf_app.ActivityMoznostiStudiaMenu"
+    tools:context="com.example.dominik.ukf_app.moznosti_studia.ActivityMoznostiStudiaMenu"
     android:backgroundTint="@color/ukf_green">
 
     <android.support.v7.widget.CardView

@@ -1,4 +1,4 @@
-package com.example.dominik.ukf_app;
+package com.example.dominik.ukf_app.orientacia;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.dominik.ukf_app.R;
 
 
 public class ActivityOrientacia extends AppCompatActivity {

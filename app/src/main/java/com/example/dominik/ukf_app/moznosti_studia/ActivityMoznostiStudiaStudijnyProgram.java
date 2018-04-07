@@ -1,12 +1,12 @@
-package com.example.dominik.ukf_app;
+package com.example.dominik.ukf_app.moznosti_studia;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.TextView;
+
+import com.example.dominik.ukf_app.R;
 
 /**
  * Created by Dominik on 14.03.2018.

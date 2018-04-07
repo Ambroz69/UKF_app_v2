@@ -1,4 +1,4 @@
-package com.example.dominik.ukf_app;
+package com.example.dominik.ukf_app.studentsky_zivot;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.GridLayout;
+
+import com.example.dominik.ukf_app.R;
 
 
 public class ActivityStudentskyZivot extends AppCompatActivity {

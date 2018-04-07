@@ -1,10 +1,12 @@
-package com.example.dominik.ukf_app;
+package com.example.dominik.ukf_app.podmienky_prijatia;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.webkit.WebView;
 import android.widget.TextView;
+
+import com.example.dominik.ukf_app.R;
 
 
 public class ActivityPodmienkyPrijatia extends AppCompatActivity {

@@ -19,47 +19,47 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityOrientacia"
+            android:name=".orientacia.ActivityOrientacia"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ActivityOrientaciaBudova"
+            android:name=".orientacia.ActivityOrientaciaBudova"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ActivityPodmienkyPrijatia"
+            android:name=".podmienky_prijatia.ActivityPodmienkyPrijatia"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ActivityStudentskyZivot"
+            android:name=".studentsky_zivot.ActivityStudentskyZivot"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ActivityStudentskyZivotDetail"
+            android:name=".studentsky_zivot.ActivityStudentskyZivotDetail"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ActivityMoznostiStudiaMenu"
+            android:name=".moznosti_studia.ActivityMoznostiStudiaMenu"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ActivityMoznostiStudiaDetail"
+            android:name=".moznosti_studia.ActivityMoznostiStudiaDetail"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ActivityMoznostiStudiaStudijnyProgram"
+            android:name=".moznosti_studia.ActivityMoznostiStudiaStudijnyProgram"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".calendar.ActivityCalendar"
+            android:name=".udalosti.ActivityCalendar"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".calendar.ActivityEventList"
+            android:name=".udalosti.ActivityEventList"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".calendar.ActivityEventDetail"
+            android:name=".udalosti.ActivityEventDetail"
             android:screenOrientation="portrait">
         </activity>
     </application>

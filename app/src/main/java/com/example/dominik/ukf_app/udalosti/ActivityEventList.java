@@ -1,4 +1,4 @@
-package com.example.dominik.ukf_app.calendar;
+package com.example.dominik.ukf_app.udalosti;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.dominik.ukf_app.MainActivity;
 import com.example.dominik.ukf_app.R;
 import com.example.dominik.ukf_app.db_connect.CalendarEvent;
 

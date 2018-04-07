@@ -1,5 +1,6 @@
-package com.example.dominik.ukf_app;
+package com.example.dominik.ukf_app.moznosti_studia;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.GridLayout;
 
+import com.example.dominik.ukf_app.R;
 import com.example.dominik.ukf_app.db_connect.StudijnyProgram;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,15 +54,19 @@ public class ActivityMoznostiStudiaMenu extends AppCompatActivity {
 
             @Override
             public void onSearchViewClosed() {
+
                 setSingleEvent(moznostiStudiaGrid);
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
 
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                setSingleEvent(moznostiStudiaGrid);
-                return false;
+
+                return true;
             }
 
             @Override

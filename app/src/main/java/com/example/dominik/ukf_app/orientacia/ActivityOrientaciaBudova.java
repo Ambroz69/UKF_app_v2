@@ -1,8 +1,10 @@
-package com.example.dominik.ukf_app;
+package com.example.dominik.ukf_app.orientacia;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.dominik.ukf_app.R;
 
 /**
  * Created by Dominik on 04.04.2018.

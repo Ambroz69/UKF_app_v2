@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:visibility="visible"
     android:background="@color/ukf_gray"
-    tools:context="com.example.dominik.ukf_app.ActivityMoznostiStudiaMenu">
+    tools:context="com.example.dominik.ukf_app.moznosti_studia.ActivityMoznostiStudiaMenu">
 
 
     <LinearLayout
@@ -43,9 +43,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -53,15 +53,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ekologia_enviromentalistika"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -74,9 +74,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -84,15 +84,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/informatika"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -106,9 +106,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -116,15 +116,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/biologia"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -137,9 +137,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -147,15 +147,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/environmentalistika"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -168,9 +168,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -178,15 +178,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/fyzika"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -199,9 +199,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -209,15 +209,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/geografia"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -230,9 +230,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -240,15 +240,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/matematika"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -261,9 +261,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -271,15 +271,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/gemologia"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -292,9 +292,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -302,15 +302,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_biologia"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -323,9 +323,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -333,15 +333,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_ekologia"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -354,9 +354,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -364,15 +364,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_fyzika"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -385,9 +385,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -395,15 +395,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_geografia"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -416,9 +416,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -426,15 +426,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_chemia"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -447,9 +447,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -457,15 +457,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_informatika"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -478,9 +478,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -488,15 +488,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_matematika"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />
@@ -509,9 +509,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginLeft="@dimen/margin_moznosti_studia_menu"
+                android:layout_marginRight="@dimen/margin_moznosti_studia_menu"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="@dimen/card_elevation">
@@ -519,15 +519,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ucitelstvo_ekonomika"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_size_menu_moznosti_studia"
                         android:textStyle="bold" />

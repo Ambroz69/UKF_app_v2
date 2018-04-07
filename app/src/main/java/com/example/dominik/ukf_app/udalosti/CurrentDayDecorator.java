@@ -1,4 +1,4 @@
-package com.example.dominik.ukf_app.calendar;
+package com.example.dominik.ukf_app.udalosti;
 
 import android.content.Context;
 import android.graphics.Color;

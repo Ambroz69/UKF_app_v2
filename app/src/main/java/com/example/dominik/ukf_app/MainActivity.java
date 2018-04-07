@@ -14,12 +14,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.dominik.ukf_app.calendar.ActivityCalendar;
+import com.example.dominik.ukf_app.orientacia.ActivityOrientacia;
+import com.example.dominik.ukf_app.podmienky_prijatia.ActivityPodmienkyPrijatia;
+import com.example.dominik.ukf_app.studentsky_zivot.ActivityStudentskyZivot;
+import com.example.dominik.ukf_app.udalosti.ActivityCalendar;
 import com.example.dominik.ukf_app.db_connect.Api;
 import com.example.dominik.ukf_app.db_connect.CalendarEvent;
 import com.example.dominik.ukf_app.db_connect.Item;
 import com.example.dominik.ukf_app.db_connect.RequestHandler;
 import com.example.dominik.ukf_app.db_connect.StudijnyProgram;
+import com.example.dominik.ukf_app.moznosti_studia.ActivityMoznostiStudiaMenu;
 
 import org.json.JSONArray;
 import org.json.JSONException;

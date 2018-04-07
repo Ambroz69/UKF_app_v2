@@ -1,10 +1,9 @@
-package com.example.dominik.ukf_app.calendar;
+package com.example.dominik.ukf_app.udalosti;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;

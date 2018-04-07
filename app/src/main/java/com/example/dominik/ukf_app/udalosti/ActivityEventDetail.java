@@ -1,7 +1,6 @@
-package com.example.dominik.ukf_app.calendar;
+package com.example.dominik.ukf_app.udalosti;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;

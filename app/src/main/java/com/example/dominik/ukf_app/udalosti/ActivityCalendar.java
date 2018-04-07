@@ -1,4 +1,4 @@
-package com.example.dominik.ukf_app.calendar;
+package com.example.dominik.ukf_app.udalosti;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.dominik.ukf_app.MainActivity;
 import com.example.dominik.ukf_app.R;
 import com.example.dominik.ukf_app.db_connect.CalendarEvent;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
