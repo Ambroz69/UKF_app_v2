@@ -1,7 +1,9 @@
 package com.example.dominik.ukf_app.moznosti_studia;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.GridLayout;
+import android.widget.Toast;
 
 import com.example.dominik.ukf_app.R;
 import com.example.dominik.ukf_app.db_connect.StudijnyProgram;
@@ -49,16 +52,13 @@ public class ActivityMoznostiStudiaMenu extends AppCompatActivity {
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
-
+                searchView.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onSearchViewClosed() {
-
                 setSingleEvent(moznostiStudiaGrid);
-                InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                hideKeyboard(ActivityMoznostiStudiaMenu.this);
             }
         });
 
@@ -74,16 +74,18 @@ public class ActivityMoznostiStudiaMenu extends AppCompatActivity {
                 if (newText!= null) {
                     for(int i = 0; i <studijnyProgramList.size(); i++) {
                         karta[i] = (CardView) moznostiStudiaGrid.getChildAt(i);
-                        if (studijnyProgramList.get(i).getNazov().toLowerCase().contains(newText.toLowerCase()))
-                            karta[i].setVisibility(View.VISIBLE);
-                        else
-                            karta[i].setVisibility(View.GONE);
+                        if (studijnyProgramList.get(i).getNazov().toLowerCase().contains(newText.toLowerCase())) {
+                            karta[i].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
+                            karta[i].setEnabled(true);
+                        }
+                        else {
+                            karta[i].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#b2b2b2")));
+                            karta[i].setEnabled(false);
+                        }
                     }
                 }
                 return true;
             }
-
-
         });
     }
 
@@ -93,6 +95,17 @@ public class ActivityMoznostiStudiaMenu extends AppCompatActivity {
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
         return true;
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     private void setSingleEvent(GridLayout mainGrid) {
@@ -109,7 +122,6 @@ public class ActivityMoznostiStudiaMenu extends AppCompatActivity {
                             startActivity(intent);
                         }
              });
-
         }
     }
 }

@@ -5,10 +5,11 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="seekbar_label_length">70dp</dimen>
     <dimen name="card_elevation">8dp</dimen>
-    <dimen name="bubi">10dp</dimen>
+    <dimen name="margin_uvodna_obrazovka">10dp</dimen>
     <dimen name="toolbar_height">35dp</dimen>
     <dimen name="text_size_menu_studentsky_zivot">14sp</dimen>
     <dimen name="margin_studentsky_zivot_menu">8dp</dimen>
-    <dimen name="margin_moznosti_studia_menu">8dp</dimen>
+    <dimen name="margin_moznosti_studia_menu">6dp</dimen>
+    <dimen name="image_view_margin_ms_menu">5dp</dimen>
     <dimen name="text_size_menu_moznosti_studia">14sp</dimen>
 </resources>

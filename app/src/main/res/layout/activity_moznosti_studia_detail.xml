@@ -55,7 +55,6 @@ android:visibility="visible">
                         android:layout_width="wrap_content"
                         android:textSize="14sp"
                         android:textColor="@android:color/black"
-                        android:layout_centerInParent="true"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>

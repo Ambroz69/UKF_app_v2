@@ -55,16 +55,14 @@
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginVertical="5dp"
+            android:layout_margin="5dp"
             android:layout_weight="1">
 
             <android.support.v7.widget.CardView
                 android:onClick="moznostiStudiaButton"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginHorizontal="@dimen/bubi"
-                android:layout_marginVertical="@dimen/bubi"
+                android:layout_margin="@dimen/margin_uvodna_obrazovka"
                 android:layout_weight="1"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
@@ -99,8 +97,7 @@
                 android:onClick="podmienkyPrijatiaButton"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginHorizontal="@dimen/bubi"
-                android:layout_marginVertical="@dimen/bubi"
+                android:layout_margin="@dimen/margin_uvodna_obrazovka"
                 android:layout_weight="1"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
@@ -136,16 +133,14 @@
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginVertical="5dp"
+            android:layout_margin="5dp"
             android:layout_weight="1">
 
             <android.support.v7.widget.CardView
                 android:onClick="studentstkyZivotButton"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginHorizontal="@dimen/bubi"
-                android:layout_marginVertical="@dimen/bubi"
+                android:layout_margin="@dimen/margin_uvodna_obrazovka"
                 android:layout_weight="1"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"
@@ -181,8 +176,7 @@
                 android:onClick="orientaciaButton"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginHorizontal="@dimen/bubi"
-                android:layout_marginVertical="@dimen/bubi"
+                android:layout_margin="@dimen/margin_uvodna_obrazovka"
                 android:layout_weight="1"
                 android:backgroundTint="@color/ukf_green"
                 app:cardCornerRadius="8dp"

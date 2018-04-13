@@ -3,8 +3,11 @@ package com.example.dominik.ukf_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.dominik.ukf_app.db_connect.MyDatabaseHelper;
 import com.example.dominik.ukf_app.orientacia.ActivityOrientacia;
 import com.example.dominik.ukf_app.podmienky_prijatia.ActivityPodmienkyPrijatia;
 import com.example.dominik.ukf_app.studentsky_zivot.ActivityStudentskyZivot;
@@ -25,11 +29,14 @@ import com.example.dominik.ukf_app.db_connect.RequestHandler;
 import com.example.dominik.ukf_app.db_connect.StudijnyProgram;
 import com.example.dominik.ukf_app.moznosti_studia.ActivityMoznostiStudiaMenu;
 
+import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -48,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
     List<StudijnyProgram> studijnyProgramList;
     List<String> dataPodmienkyPrijatia, dataStudentskyZivot, obrazkyNazovList, obrazkyUrlList;
     ImageView imageView;
-
-
+    MyDatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +72,96 @@ public class MainActivity extends AppCompatActivity {
         studijnyProgramList = new ArrayList<>();
         obrazkyNazovList = new ArrayList<>();
         obrazkyUrlList = new ArrayList<>();
+        dbHelper = new MyDatabaseHelper(this);
 
-        //load textov
-        readItems();
+        if (isNetworkAvailable()) {
+            //pripojenie na server, naplnenie udajov
+            readItems();
+        } else {
+            //pripojenie na internu databazu, naplnenie udajov
+            readOfflineDatabase();
+            Toast.makeText(getApplicationContext(),"Načítané offline údaje.", Toast.LENGTH_SHORT).show();
+            locked = false;
+        }
+    }
+
+    private void readOfflineDatabase() {
+        Cursor data_studijny_program = dbHelper.getAllFromTable("studijny_program");
+        studijnyProgramList.clear();
+        data_studijny_program.moveToFirst();
+        while (!data_studijny_program.isAfterLast()) {
+            studijnyProgramList.add(new StudijnyProgram (
+                    data_studijny_program.getInt(data_studijny_program.getColumnIndex("id")),
+                    data_studijny_program.getString(data_studijny_program.getColumnIndex("nazov")),
+                    "-",
+                    data_studijny_program.getString(data_studijny_program.getColumnIndex("obsah")),
+                    data_studijny_program.getString(data_studijny_program.getColumnIndex("detail"))
+            ));
+            data_studijny_program.moveToNext();
+        }
+        Cursor data_studentsky_zivot = dbHelper.getAllFromTable("studentsky_zivot");
+        studentskyZivotList.clear();
+        data_studentsky_zivot.moveToFirst();
+        while (!data_studentsky_zivot.isAfterLast()) {
+            studentskyZivotList.add(new Item (
+                    data_studentsky_zivot.getInt(data_studentsky_zivot.getColumnIndex("id")),
+                    data_studentsky_zivot.getString(data_studentsky_zivot.getColumnIndex("nazov")),
+                    data_studentsky_zivot.getString(data_studentsky_zivot.getColumnIndex("obsah"))
+            ));
+            data_studentsky_zivot.moveToNext();
+        }
+        Cursor data_podmienky_prijatia = dbHelper.getAllFromTable("podmienky_prijatia");
+        podmienkyPrijatiaList.clear();
+        data_podmienky_prijatia.moveToFirst();
+        while (!data_podmienky_prijatia.isAfterLast()) {
+            podmienkyPrijatiaList.add(new Item (
+                    data_podmienky_prijatia.getInt(data_podmienky_prijatia.getColumnIndex("id")),
+                    data_podmienky_prijatia.getString(data_podmienky_prijatia.getColumnIndex("nazov")),
+                    data_podmienky_prijatia.getString(data_podmienky_prijatia.getColumnIndex("obsah"))
+            ));
+            data_podmienky_prijatia.moveToNext();
+        }
+        Cursor data_udalosti = dbHelper.getAllFromTable("udalosti");
+        udalostiList.clear();
+        data_udalosti.moveToFirst();
+        while (!data_udalosti.isAfterLast()) {
+            udalostiList.add(new CalendarEvent (
+                    data_udalosti.getInt(data_udalosti.getColumnIndex("id")),
+                    data_udalosti.getString(data_udalosti.getColumnIndex("nazov")),
+                    data_udalosti.getString(data_udalosti.getColumnIndex("datum")),
+                    data_udalosti.getString(data_udalosti.getColumnIndex("popis"))
+            ));
+            data_udalosti.moveToNext();
+        }
+    }
+
+    private void fillOfflineDatabase() {
+        for (int i = 0; i < studijnyProgramList.size(); i++) {
+            dbHelper.addStudijnyProgram(
+                    studijnyProgramList.get(i).getNazov(),
+                    studijnyProgramList.get(i).getObsah(),
+                    studijnyProgramList.get(i).getDetail());
+        }
+        for (int i = 0; i < studentskyZivotList.size(); i++) {
+            dbHelper.addStudentskyZivot(
+                    studentskyZivotList.get(i).getNazov(),
+                    studentskyZivotList.get(i).getObsah());
+        }
+        dbHelper.addPodmienkyPrijatia(
+                podmienkyPrijatiaList.get(0).getNazov(),
+                podmienkyPrijatiaList.get(0).getObsah());
+        for (int i = 0; i < udalostiList.size(); i++) {
+            dbHelper.addUdalosti(
+                    udalostiList.get(i).getNazov(),
+                    udalostiList.get(i).getDatum(),
+                    udalostiList.get(i).getPopis());
+        }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public void saveImage(Context context, Bitmap b, String imageName) {
@@ -78,13 +171,11 @@ public class MainActivity extends AppCompatActivity {
             b.compress(Bitmap.CompressFormat.JPEG, 100, foStream);
             foStream.close();
         } catch (Exception e) {
-            Log.d("saveImage", "Exception 2, Something went wrong!");
             e.printStackTrace();
         }
     }
 
     private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
-        private String TAG = "DownloadImage";
         String imageName;
 
         public DownloadImage(String imageName) {
@@ -93,11 +184,10 @@ public class MainActivity extends AppCompatActivity {
         private Bitmap downloadImageBitmap(String sUrl) {
             Bitmap bitmap = null;
             try {
-                InputStream inputStream = new URL(sUrl).openStream();   // Download Image from URL
-                bitmap = BitmapFactory.decodeStream(inputStream);       // Decode Bitmap
+                InputStream inputStream = new URL(sUrl).openStream();
+                bitmap = BitmapFactory.decodeStream(inputStream);
                 inputStream.close();
             } catch (Exception e) {
-                Log.d(TAG, "Exception 1, Something went wrong!");
                 e.printStackTrace();
             }
             return bitmap;
@@ -166,50 +256,40 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void readPictures() {
+        //delete files
+        String path = getApplicationContext().getFilesDir().toString();
+        try {
+            FileUtils.cleanDirectory(new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //download new
         for (int i = 0; i < obrazkyUrlList.size(); i++) {
             new DownloadImage(obrazkyNazovList.get(i)).execute("https://" + obrazkyUrlList.get(i));
         }
     }
     private void readItems() {
 
-        PerformNetworkRequest request1 = new PerformNetworkRequest(Api.URL_READ_ITEMS, null, CODE_GET_REQUEST);
+        PerformNetworkRequest request1 = new PerformNetworkRequest(Api.URL_READ_PODMIENKY_PRIJATIA, CODE_GET_REQUEST, false);
         request1.execute();
 
-        PerformNetworkRequest request2 = new PerformNetworkRequest(Api.URL_READ_PODMIENKY_PRIJATIA, null, CODE_GET_REQUEST);
+        PerformNetworkRequest request2 = new PerformNetworkRequest(Api.URL_READ_STUDENTSKY_ZIVOT, CODE_GET_REQUEST, false);
         request2.execute();
 
-        PerformNetworkRequest request3 = new PerformNetworkRequest(Api.URL_READ_STUDENTSKY_ZIVOT, null, CODE_GET_REQUEST);
+        PerformNetworkRequest request3 = new PerformNetworkRequest(Api.URL_READ_UDALOSTI, CODE_GET_REQUEST, false);
         request3.execute();
 
-        PerformNetworkRequest request4 = new PerformNetworkRequest(Api.URL_READ_UDALOSTI, null, CODE_GET_REQUEST);
+        PerformNetworkRequest request4 = new PerformNetworkRequest(Api.URL_READ_STUDIJNY_PROGRAM, CODE_GET_REQUEST, false);
         request4.execute();
 
-        PerformNetworkRequest request5 = new PerformNetworkRequest(Api.URL_READ_STUDIJNY_PROGRAM, null, CODE_GET_REQUEST);
+        PerformNetworkRequest request5 = new PerformNetworkRequest(Api.URL_READ_IMAGES, CODE_GET_REQUEST, true);
         request5.execute();
-
-        PerformNetworkRequest request6 = new PerformNetworkRequest(Api.URL_READ_IMAGES, null, CODE_GET_REQUEST);
-        request6.execute();
-
-        Toast.makeText(getApplicationContext(),"Načítané.", Toast.LENGTH_SHORT).show();
-        locked = false;
     }
 
-    private void refreshItemList(JSONArray items, String message) throws JSONException {
+    private void refreshItemList(JSONArray items, String message)
+            throws JSONException {
 
         switch(message) {
-            case "moznosti_studia":
-                itemList.clear();
-                for (int i = 0; i < items.length(); i++) {
-                    JSONObject obj = items.getJSONObject(i);
-
-                    itemList.add(new Item(
-                            obj.getInt("id"),
-                            obj.getString("nazov"),
-                            obj.getString("obsah")
-                    ));
-                }
-            break;
-
             case "podmienky_prijatia":
                 podmienkyPrijatiaList.clear();
                 for (int i = 0; i < items.length(); i++) {
@@ -283,13 +363,13 @@ public class MainActivity extends AppCompatActivity {
 
     private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
         String url;
-        HashMap<String, String> params;
         int requestCode;
+        boolean isLast;
 
-        PerformNetworkRequest(String url, HashMap<String, String> params, int requestCode) {
+        PerformNetworkRequest(String url, int requestCode, boolean isLast) {
             this.url = url;
-            this.params = params;
             this.requestCode = requestCode;
+            this.isLast = isLast;
         }
 
         @Override
@@ -303,15 +383,14 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject object = new JSONObject(s);
                 if (!object.getBoolean("error")) {
-                    //Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
                     refreshItemList(object.getJSONArray("items"), object.getString("message"));
+                }
+                if (isLast) {
                     readPictures();
-
-                    //debug
-                    if (!obrazkyUrlList.isEmpty()) {
-                        System.out.println(Arrays.deepToString(getFilesDir().listFiles()));
-                    }
-
+                    dbHelper.deleteAll();
+                    fillOfflineDatabase();
+                    Toast.makeText(getApplicationContext(),"Načítané online údaje.", Toast.LENGTH_SHORT).show();
+                    locked = false;
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -321,10 +400,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... voids) {
             RequestHandler requestHandler = new RequestHandler();
-
-            if (requestCode == CODE_POST_REQUEST)
-                return requestHandler.sendPostRequest(url, params);
-
 
             if (requestCode == CODE_GET_REQUEST)
                 return requestHandler.sendGetRequest(url);

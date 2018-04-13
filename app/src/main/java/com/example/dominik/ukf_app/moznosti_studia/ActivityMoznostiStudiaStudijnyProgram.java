@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebView;
 
+import com.example.dominik.ukf_app.MainActivity;
 import com.example.dominik.ukf_app.R;
 
 /**
@@ -35,6 +36,4 @@ public class ActivityMoznostiStudiaStudijnyProgram extends AppCompatActivity {
         intent.putExtra("detail", detail);
         startActivity(intent);
     }
-
-
 }

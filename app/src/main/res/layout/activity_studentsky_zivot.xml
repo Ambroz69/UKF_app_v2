@@ -28,7 +28,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -49,7 +49,7 @@
                     <TextView
                         android:text="@string/mesto"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/doprava"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold" />
 
@@ -109,7 +109,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -130,7 +130,7 @@
                     <TextView
                         android:text="@string/internet"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -149,7 +149,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -170,7 +170,7 @@
                     <TextView
                         android:text="@string/ubytovanie"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -210,7 +210,7 @@
                     <TextView
                         android:text="@string/stravovanie"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -229,7 +229,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -250,7 +250,7 @@
                     <TextView
                         android:text="@string/kultura_sport"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -269,7 +269,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -290,7 +290,7 @@
                     <TextView
                         android:text="@string/basketbal"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -309,7 +309,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -330,7 +330,7 @@
                     <TextView
                         android:text="@string/fs_ponitran"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -349,7 +349,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -370,7 +370,7 @@
                     <TextView
                         android:text="@string/kluby_zdruzenia"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -389,7 +389,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -410,7 +410,7 @@
                     <TextView
                         android:text="@string/upc"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -429,7 +429,7 @@
                 android:layout_marginBottom="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginLeft="@dimen/margin_studentsky_zivot_menu"
                 android:layout_marginRight="@dimen/margin_studentsky_zivot_menu"
-                android:backgroundTint="@color/ukf_green"
+                android:backgroundTint="@android:color/white"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardCornerRadius="8dp"
                 >
@@ -450,7 +450,7 @@
                     <TextView
                         android:text="@string/erasmus"
                         android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/ukf_green"
                         android:textSize="@dimen/text_size_menu_studentsky_zivot"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
